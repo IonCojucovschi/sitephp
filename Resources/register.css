@@ -1,0 +1,12 @@
+.register{
+
+  color:#34578e;
+  font-family: "Times New Roman",Times,serif;
+  font-size: 20px;
+  margin: 5px; 
+
+}
+.registercomponent{
+	border-radius: 3px;
+	margin:10px;
+}
