@@ -4,7 +4,7 @@ include_once 'setting.php';
 session_start();
 $CONNECT=mysqli_connect(HOST,USER,PASS,DB);
 if($CONNECT){
-echo 'ok';
+////echo 'ok';
 }else{
 	echo 'error';
 }
