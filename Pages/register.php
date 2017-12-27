@@ -61,7 +61,7 @@ Head('Inregistrare');
 
 
 
-            <input class="registercomponent" placeholder="Introdu textul alaturat"  id="pass" type="text" name="pasword" autofocus required>
+            <input class="registercomponent" placeholder="Introdu textul alaturat"  id="captcha" type="text" name="pasword" autofocus required>
            <img class="registercomponent" src="Resources/captcha.php" alt="Captcha">
  
         </fieldset>

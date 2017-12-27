@@ -20,10 +20,11 @@ $_POST['captcha']==FormChars($_POST['captcha']);
 
 
 if(!$_POST['name'] or !$_POST['surname'] or !$_POST['email'] or !$_POST['faculty'] or !$_POST['speciality'] or !$_POST['birthDate'] or !$_POST['matriculationDate'] or !$_POST['gender'] or !$_POST['login'] or !$_POST['pasword'] or !$_POST['captcha']) {
-///echo $_SESSION['captcha'];
+echo var_dump($_SESSION);
+echo md5($Random);///['captcha'];
 ///echo md5($Random);   //scopul este de a verifica criptarea numarului daca este corecta..
                          
-     MesageSend(1,'forma este indeplinita gresit');
+    // MesageSend(1,'forma este indeplinita gresit');
 }
 
 if($_SESSION['captcha']!=md5($Random))
