@@ -49,7 +49,8 @@ else if($p1==2) $p1='Hint';
 else if ($p1==3) $p1='Informatie';
 
 $_SESSION['message']='<div class="MessageBlock"><b>'.$p1.'</b>'.$p2.'</div>';
-exit(header('Location:'.$_SERVER['HTTP_REDERER']));
+$server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
+exit(header('Location:'.$server));
 }
 
 function MessageShow(){
