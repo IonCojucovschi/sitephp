@@ -46,7 +46,7 @@ $_POST['captcha']==FormChars($_POST['captcha']);
 }
 
  $Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `login` FROM `Users` WHERE (`login`='$_POST[login]')"));
- ///echo var_dump($Row);
+ //echo var_dump($Row);
 // //verificam unicitatea loginului 
 if($Row){
 	echo 'Loginul de forma '.$_POST['login'].' exista deja!';
@@ -65,7 +65,7 @@ if($Row){
 
 // $soem=mysqli_query($CONNECT, "INSERT INTO `Users` VALUES ( '', '$_POST[login]','$_POST[pasword]','$_POST[name]','$_POST[surname]','$_POST[birthDate]', '$_POST[faculty]','$_POST[speciality]','$_POST[matriculationDate]','$_POST[telephone]','$_POST[coments]','.$_POST[email]','nimic','$_POST[gender]')");
 
-//echo 'ok';
+echo 'ok';
 
 
 //exit;

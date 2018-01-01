@@ -35,7 +35,7 @@ if($Page=='index') include('Pages/index.php');
 else if($Page=='login') include('Pages/login.php');
 else if($Page=='register') include('Pages/register.php');
 else if($Page=='account') include('Form/account.php');
-
+else if($Page=='addbook') include('Pages/addbook.php');
 
 
 
@@ -90,6 +90,7 @@ function Menu(){
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
 		  <a href="/" class="menu">HOME</a>	
+		  <a  href="/addbook" class="menu">Add Books</a>
           <a  href="/register" class="menu">Register</a>	
           <a href="/login"  class="menu">Login</a>	
           <div class="menu">menu</div>	

@@ -111,3 +111,38 @@ border:1px solid #6c9ae2;
 background:#f44842;
 
 }
+
+
+
+/*THERE IS DESIGN FOR BOOK ITEM
+-----------------------------------------------------------------------------*/
+.book_wrapper{
+  background:#caf9d2;
+  height:254px;
+  width: 184px;
+  padding: 4px; 
+}
+
+.book_name{margin-right: 20px;
+     margin-left: 20px;}
+.details{
+	background:#68bb54; 
+	padding: 10px; 
+	margin-top: 195px;
+	border-radius: 5px;" }
+.download{
+	background:#68bb54;
+	padding: 10px;
+	margin-left: 38px;
+    margin-top: 195px;
+	border-radius: 5px;
+}
+
+
+     
+
+
+
+
+
+
