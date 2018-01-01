@@ -67,9 +67,9 @@ $_SESSION['message']= array();
 
   ///fist param is password, last is login
   ///pentru fiecare combinatie de log si pasw se creaza o parola criptata.
-function GenPas($p1,$p2){
-
-  return md5($p1.$p2.'read');///'read'.md5('123'.$p1.'321').md5('123'.$p2.'321')
+function GenPasword($p1,$p2){
+    $codedpassword=md5(md5($p1).md5($p2));
+  return $codedpassword;///'read'.md5('123'.$p1.'321').md5('123'.$p2.'321')
 
 }
 
