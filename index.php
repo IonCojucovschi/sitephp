@@ -73,13 +73,16 @@ function GenPasword($p1,$p2){
 
 }
 
-
+///regulate chars
 function FormChars($p1){
 
 return nl2br(htmlspecialchars(trim($p1),ENT_QUOTES),false);
 
 }
 
+
+
+//// form for complet content
 
 function Head($p1){
 
@@ -121,6 +124,22 @@ function Content($p1){
 
 	</div><!-- .middle-->';
 }
+
+function BookFoorm($book_name,$image_link,$download_link,$detail_link){
+
+	echo '<div class="book_wrapper"
+       style="background-image:url("'.$image_link.'");">
+	<div class="book_name">'.$book_name.'</div>
+   	<button type="submit" class="details">
+   	<a href="'.$detail_link.'">Detail</a>
+   	</button>
+	<button type="submit" class="download">
+	<a href="'.$download_link.'">Download</a>
+	</button>
+
+</div>'
+}
+
 
 
 
