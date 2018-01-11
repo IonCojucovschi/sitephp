@@ -137,7 +137,7 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 	<a href="'.$download_link.'">Download</a>
 	</button>
 
-</div>'
+</div>';
 }
 
 
