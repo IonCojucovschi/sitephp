@@ -4,7 +4,7 @@ session_start();
 $Random=rand(10001,99999);
 $_SESSION['captcha']=md5($Random);
 $im=imagecreatetruecolor(130, 30);
-imagefilledrectangle($im,0,0,130,30,imagecolorallocate($im,255,255,255));
+imagefilledrectangle($im,0,0,130,30,imagecolorallocate($im,175,198,234));////imagecolorallocate($im,175,198,234)  fundalul imaginii rgb codului captcha cu alte cuvinte
 imagettftext($im, 30, 0, 15, 25,imagecolorallocate($im,02,02,02),'../Resources/font.ttf',$Random);
 
 header('Expires: Wed, 1 Jan 1994 00:00:00 GMT');

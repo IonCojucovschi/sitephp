@@ -3,8 +3,10 @@ after surname ;;;
 
  <label class="registercomponent" for="telephone">Telephone</label>
             <input class="registercomponent"  id="telephone" name="telephone" placeholder="(xxx) xxx-xxxx"><br>
-            <label class="registercomponent"  for="email">Email <em>*</em></label>
-            <input class="registercomponent"  id="email" name="email" type="email" required><br>
+           ////
+
+Email
+           ////
              <label class="registercomponent" for="faculty">Facultatea <em>*</em></label>
             <input class="registercomponent" id="faculty" name="faculty" autofocus required><br>
             <label class="registercomponent" for="speciality">Specialitatea <em>*</em></label>

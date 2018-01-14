@@ -31,6 +31,8 @@ Head('Inregistrare');
             <input class="registercomponent"  id="name" name="name" placeholder="Jane" autofocus required=""><br>
             <label class="registercomponent" for="surname">Surname <em>*</em></label>
             <input class="registercomponent"  id="surname" name="surname" placeholder="Smith" autofocus required><br>
+             <label class="registercomponent"  for="email">Email <em>*</em></label>
+            <input class="registercomponent"  id="email" name="email" type="email" required><br>
            
 
        </fieldset>

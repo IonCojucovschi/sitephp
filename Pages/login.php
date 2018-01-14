@@ -15,7 +15,7 @@ Head('Login');
 
     <?php Menu();   ?>
 	<!-- .header-->
-    <?php  Content('<h2>Forma de inregistrare a Utilizatorilor</h2>
+    <?php  Content('<h2>Forma de inregistrare a Utilizatorilor</h2>'.MessageShow().'
 <form id="", method="POST" action="/login" onsubmit="return validateForm()">
            <label class="registercomponent" for="login">Login<em>*</em></label>
             <input class="registercomponent" id="login" name ="login"  autofocus required><br>

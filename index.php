@@ -44,10 +44,12 @@ else if($Page=='book') include('Form/book.php');
 
 
 
-function MesageSend($p1,$p2){
+function MesageSend($p1,$p2,$p3=''){
 if($p1==1) $p1='Eroaere';
 else if($p1==2) $p1='Hint';
 else if ($p1==3) $p1='Informatie';
+
+if($p3) $_SERVER['HTTP_REFERER']=$p3;
 
 $_SESSION['message']='<div class="MessageBlock"><b>'.$p1.'</b>'.$p2.'</div>';
 $server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
