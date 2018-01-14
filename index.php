@@ -36,6 +36,7 @@ else if($Page=='login') include('Pages/login.php');
 else if($Page=='register') include('Pages/register.php');
 else if($Page=='account') include('Form/account.php');
 else if($Page=='addbook') include('Pages/addbook.php');
+else if($Page=='book') include('Form/book.php');
 
 
 

@@ -42,7 +42,7 @@ $_POST['captcha']==FormChars($_POST['captcha']);
 //echo strcmp($_SESSION['captcha'],md5($_POST['captcha']));
 
  if(strcmp($_SESSION['captcha'],md5($_POST['captcha']))!=0){
- 	MesageSend(1,'codul captcha este scris gresit!');
+ 	MesageSend(1,' codul captcha este scris gresit!');
 }
 
  $Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `login` FROM `Users` WHERE (`login`='$_POST[login]')"));

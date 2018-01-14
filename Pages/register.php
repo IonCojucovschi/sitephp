@@ -7,7 +7,7 @@ Head('Inregistrare');
 
 <div class="wrapper" >
 
-    <?php Menu();   ?>
+    <?php Menu();  ?>
 	<!-- .header-->
 
 	<div class="middle">
@@ -17,6 +17,11 @@ Head('Inregistrare');
 				
 <div class="wrapper_container">
   <h2>Forma de inregistrare a Utilizatorilor</h2><hr class="hr1">
+  <?php   
+  ////afisam eroarea in caz de gresim indeplinirea formei
+   MessageShow(); 
+
+      ?>
   <div class=formUser>
   <form class="register"  method="POST" action="/account/register" onsubmit="return validateForm()">
        <p><i>Completati urmatoarea forma.</i></p>
