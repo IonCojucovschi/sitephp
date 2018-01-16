@@ -28,9 +28,9 @@ Head('Inregistrare');
        <fieldset id="userData">
          <legend>Detaliile Utilizatorului</legend>
             <label  class="registercomponent"  for="name">Name <em>*</em></label>
-            <input class="registercomponent"  id="name" name="name" placeholder="Jane" autofocus required=""><br>
+            <input class="registercomponent"  id="name" name="name" placeholder="Jane" autofocus required maxlength="10" pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
             <label class="registercomponent" for="surname">Surname <em>*</em></label>
-            <input class="registercomponent"  id="surname" name="surname" placeholder="Smith" autofocus required><br>
+            <input class="registercomponent"  id="surname" name="surname" placeholder="Smith" autofocus required maxlength="10" pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
              <label class="registercomponent"  for="email">Email <em>*</em></label>
             <input class="registercomponent"  id="email" name="email" type="email" required><br>
            
@@ -39,7 +39,7 @@ Head('Inregistrare');
         <fieldset id="personalData">
             <legend>Informatia Personala</legend>
            <label class="registercomponent" for="login">Login<em>*</em></label>
-            <input class="registercomponent" id="login" name ="login"  autofocus required><br>
+            <input class="registercomponent" id="login" name ="login"  autofocus required maxlength="10" pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
             <label class="registercomponent" for="pass">Parola<em>*</em></label>
             <input class="registercomponent" id="pass" type="password" name="pasword" autofocus required><br>
             <input class="registercomponent" placeholder="Introdu textul alaturat"  id="captcha" type="text" name="captcha" autofocus required>

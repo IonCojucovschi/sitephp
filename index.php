@@ -37,6 +37,17 @@ else if($Page=='register') include('Pages/register.php');
 else if($Page=='account') include('Form/account.php');
 else if($Page=='addbook') include('Pages/addbook.php');
 else if($Page=='book') include('Form/book.php');
+else if($Page=='profile') include('Pages/profile.php');
+
+
+
+
+function ULogin($p1){
+
+if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','index');
+elseif ($_SESSION['USER_LOGIN_IN']=$p1) MesageSend(1,'Pagina data este disponibila doar pentru utilizatori.','index');
+
+}
 
 
 
@@ -78,9 +89,7 @@ function GenPasword($p1,$p2){
 
 ///regulate chars
 function FormChars($p1){
-
 return nl2br(htmlspecialchars(trim($p1),ENT_QUOTES),false);
-
 }
 
 
@@ -93,12 +102,16 @@ function Head($p1){
 }
 
 function Menu(){
+
+   if($_SESSION['USER_LOGIN_IN']!=1) $Menu=' <a  href="/register" class="menu">Register</a>	
+          <a href="/login"  class="menu">Login</a>';
+      else $Menu='<a  href="/profile" class="menu">Profil</a>	';
+
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
 		  <a href="/" class="menu">HOME</a>	
 		  <a  href="/addbook" class="menu">Add Books</a>
-          <a  href="/register" class="menu">Register</a>	
-          <a href="/login"  class="menu">Login</a>	
+          '.$Menu.'
           <div class="menu">menu</div>	
         </div>
 	</header>';

@@ -54,9 +54,9 @@ Head('Adaoga carti');
         <fieldset id="personalData">
             <legend>Informatie Aditionala</legend>
             <label class="registercomponent">Selecteaza imaginea </label>
-            <input class="registercomponent" id="" name ="image"  type="file" autofocus required><br>
+            <input class="registercomponent" id="image" name ="image"  type="file" autofocus required><br>
             <label class="registercomponent">Adaoga continutul cartii </label>
-            <input class="registercomponent" id="pass" type="file" name="bookcontent" autofocus required><br>
+            <input class="registercomponent" id="bookcontent" type="file" name="bookcontent" autofocus required><br>
             <input class="registercomponent" placeholder="Introdu textul alaturat"  id="captcha" type="text" name="captcha" autofocus required>
 
            <img class="registercomponent" src="Resources/captcha.php" alt="Captcha">

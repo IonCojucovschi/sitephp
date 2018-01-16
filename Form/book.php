@@ -37,7 +37,7 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
   	}else{
   		$msg = "Failed to upload image";
   	}
-if (move_uploaded_file($_FILES['image']['tmp_name'], $book)) {
+if (move_uploaded_file($_FILES['bookcontent']['tmp_name'], $book)) {
   		$msg = "Book uploaded successfully";
   	}else{
   		$msg = "Failed to upload book content!!";

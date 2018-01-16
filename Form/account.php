@@ -1,4 +1,5 @@
 <?php
+ULogin(0);///pagina e pentru vizitatori
 if($Module=='register' and  $_POST['enter']){
 
 // echo var_dump($_POST);
@@ -59,26 +60,48 @@ if($Row){
 
 
 
+///transmite linkul pe emailul dat cu ajutorul SMTP
+
+// require_once "Mail.php";
+
+// $from = "Cojucovschi Ion <readabook@gmail.com>";
+// $to = $_POST['name'].' '.$_POST['surname'].'<'.$_POST['Email'].'>';
+// $subject = "Hi!";
+// $body = "Hi,\n\nHow are you?";
+
+// $host = "mail.ru";
+// $username = "cojucovschi@mail.ru";
+// $password = "4ion1994";
+
+// $headers = array ('From' => $from,
+//   'To' => $to,
+//   'Subject' => $subject);
+// $smtp = Mail::factory('smtp',
+//   array ('host' => $host,
+//     'auth' => true,
+//     'username' => $username,
+//     'password' => $password));
+
+// $mail = $smtp->send($to, $headers, $body);
+
+// if (PEAR::isError($mail)) {
+//   echo("<p>" . $mail->getMessage() . "</p>");
+//  } else {
+//   echo("<p>Message successfully sent!</p>");
+//  }
+
+
 ///cu confirmarea mail treb de mai vazut ,,,nu se transmite pe posta poate tre de schimbat alta functie,,, o sa vedem ce facem....
 
 $Code=$_POST['login'];
+
 mail($_POST['email'],'Inregistrarea pe blogul readAbook.',
 'Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
 MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.');
 
-//////////       FULL QUERY       ///////////////
-// mysqli_query($CONNECT, "INSERT INTO `Users` VALUES ( '', '$_POST[login]','$_POST[pasword]','$_POST[name]','$_POST[surname]','$_POST[birthDate]', '$_POST[faculty]','$_POST[speciality]','$_POST[matriculationDate]','$_POST[telephone]','$_POST[coments]','.$_POST[email]','nimic','$_POST[gender]')");
 
 
-
-
-
-
-
-
-
-
-else if ($Module=='activate' and $Param['code']) {
+}else if ($Module=='activate' and $Param['code']) {
 	if(!$_SESSION['USER_ACTIVE_EMAIL'])
 	{
 		$Email=substr($Param['code'],5).substr($Param['code'], 0,5);
@@ -89,15 +112,43 @@ else if ($Module=='activate' and $Param['code']) {
             MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');
 		}else MesageSend(1,'Adresa email nu este confirmata.','/login');
 	}else MesageSend(1,'Adresa emai <b>'.$_SESSION['USER_ACTIVE_EMAIL'].' este deja confirmata </b>','/login');
+
+
+}else if ($Module=='login' and $_POST['enter']){
+
+$_POST['login']==FormChars($_POST['login']);
+$_POST['pasword']==GenPasword(FormChars($_POST['pasword']),$_POST['login']);
+
+
+if(!$_POST['login'] or !$_POST['pasword']){
+
+	MesageSend(1," Nu este posibil sa fa logati cu asa date.");
+}
+
+ $Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `pasword`,`active` FROM `Users` WHERE (`login`='$_POST[login]')"));
+
+if($Row['pasword']!=$_POST['pasword']) MesageSend(1,"<b>Parola</b> sau <b>Loginul</b> este gresita.");
+
+if($Row['active']==0) MesageSend(3,"Contul nu este activ. Intrati pe posta electronica cu care cati inregistrat si accesati lincul de activare.");
+
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`login`='$_POST[login]')"));
+
+$_SESSION['USER_ID']=$Row['id'];
+$_SESSION['USER_NAME']=$Row['name'];
+$_SESSION['USER_SURNAME']=$Row['surname'];
+$_SESSION['USER_EMAIL']=$Row['Email'];
+$_SESSION['USER_LOGIN']=$Row['login'];
+$_SESSION['USER_PASWORD']=$Row['pasword'];
+$_SESSION['USER_ACTIVE']=$Row['active'];
+$_SESSION['USER_LOGIN_IN']=1;
+
+exit( header('Location:/profile'));
+
+
+
 }
 
 
 
-echo 'ok';
-
-
-
-
-}
 
 ?>
