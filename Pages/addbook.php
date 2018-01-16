@@ -1,4 +1,5 @@
 <?php
+ULogin(1);
 Head('Adaoga carti');
 ?>
 <link rel="stylesheet" type="text/css" href="Resources/register.css">

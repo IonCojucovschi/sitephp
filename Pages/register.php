@@ -1,5 +1,5 @@
-
 <?php
+ULogin(0);
 Head('Inregistrare');
 ?>
 <link rel="stylesheet" type="text/css" href="Resources/register.css">

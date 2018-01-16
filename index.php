@@ -45,7 +45,7 @@ else if($Page=='profile') include('Pages/profile.php');
 function ULogin($p1){
 
 if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','index');
-elseif ($_SESSION['USER_LOGIN_IN']=$p1) MesageSend(1,'Pagina data este disponibila doar pentru utilizatori.','index');
+else if ($_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru utilizatori.','index');
 
 }
 
@@ -103,14 +103,14 @@ function Head($p1){
 
 function Menu(){
 
-   if($_SESSION['USER_LOGIN_IN']!=1) $Menu=' <a  href="/register" class="menu">Register</a>	
+   if($_SESSION['USER_LOGIN_IN']!=1) $Menu='<a  href="/register" class="menu">Register</a>	
           <a href="/login"  class="menu">Login</a>';
-      else $Menu='<a  href="/profile" class="menu">Profil</a>	';
+      else $Menu='<a  href="/addbook" class="menu">Add Books</a>
+      	<a  href="/profile" class="menu">Profil</a>	';
 
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
 		  <a href="/" class="menu">HOME</a>	
-		  <a  href="/addbook" class="menu">Add Books</a>
           '.$Menu.'
           <div class="menu">menu</div>	
         </div>
