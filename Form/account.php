@@ -6,17 +6,14 @@ if($_COOKIE['user']) {setcookie('user','',time()-700000,'/');
 unset($_COOKIE['user']);}	
 
 session_unset();
-$_SESSION = array();
-session_destroy();
+//session_destroy();
 
 exit( header('Location: /login'));
 }
 
 
-
-ULogin(0);///pagina e pentru vizitatori
 if($Module=='register' and  $_POST['enter']){
-
+ULogin(0);///pagina e pentru vizitatori
 // echo var_dump($_POST);
 
 $_POST['name']==FormChars($_POST['name']);
@@ -77,42 +74,43 @@ if($Row){
 
 ///transmite linkul pe emailul dat cu ajutorul SMTP
 
-// require_once "Mail.php";
+$Code=$_POST['login'];
 
-// $from = "Cojucovschi Ion <readabook@gmail.com>";
-// $to = $_POST['name'].' '.$_POST['surname'].'<'.$_POST['Email'].'>';
-// $subject = "Hi!";
-// $body = "Hi,\n\nHow are you?";
+///mail($_POST['email'],'Inregistrarea pe blogul readAbook.','Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
 
-// $host = "mail.ru";
-// $username = "cojucovschi@mail.ru";
-// $password = "4ion1994";
 
-// $headers = array ('From' => $from,
-//   'To' => $to,
-//   'Subject' => $subject);
-// $smtp = Mail::factory('smtp',
-//   array ('host' => $host,
-//     'auth' => true,
-//     'username' => $username,
-//     'password' => $password));
+include "lib/class.phpmailer.php";
 
-// $mail = $smtp->send($to, $headers, $body);
+$mail-> new PHPMailer();
 
-// if (PEAR::isError($mail)) {
-//   echo("<p>" . $mail->getMessage() . "</p>");
-//  } else {
-//   echo("<p>Message successfully sent!</p>");
-//  }
+$mail->IsSMTP();
+$mail->Host="smtp.gmail.com";
+$mail->SMTPAuth=true;
+$mail->SMTPSecure->"ssl";
+$mail->Port=465;
 
+$mail->Username="cojucovschi@gmail.com";
+$mail->Password="4ion1994";
+$mail->SerFrom("readAbook.com administrator site.");
+$mail->Subject="Email validation account.";
+$mail->MsgHTML($body);////if you are a html file to sent to this email;
+
+$address=$_POST['email'];
+$mail->AddAddress($address,"Name Surname");
+
+if ($mail->Send()) {
+ MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.'); ;
+ } else {
+  MesageSend(3,': Din pacate inregistrarea nu sa finisat. Masajul de activare nu sa transmis la adresa <b>'.$_POST['email'].'</b>.');
+ }
 
 ///cu confirmarea mail treb de mai vazut ,,,nu se transmite pe posta poate tre de schimbat alta functie,,, o sa vedem ce facem....
 
-$Code=$_POST['login'];
+// $Code=$_POST['login'];
 
-mail($_POST['email'],'Inregistrarea pe blogul readAbook.',
-'Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
-MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.');
+// mail($_POST['email'],'Inregistrarea pe blogul readAbook.',
+// 'Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
+// MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.');
 
 
 
