@@ -1,4 +1,19 @@
 <?php
+
+if($Module=='logout' and $_SESSION['USER_ACTIVE_EMAIL']==1){
+
+if($_COOKIE['user']) {setcookie('user','',time()-700000,'/');
+unset($_COOKIE['user']);}	
+
+session_unset();
+$_SESSION = array();
+session_destroy();
+
+exit( header('Location: /login'));
+}
+
+
+
 ULogin(0);///pagina e pentru vizitatori
 if($Module=='register' and  $_POST['enter']){
 
@@ -141,6 +156,11 @@ $_SESSION['USER_LOGIN']=$Row['login'];
 $_SESSION['USER_PASWORD']=$Row['pasword'];
 $_SESSION['USER_ACTIVE']=$Row['active'];
 $_SESSION['USER_LOGIN_IN']=1;
+
+if($_REQUEST['remember']){
+setcookie('user',$_POST['pasword'],strtotime('30 days'),'/');
+
+}
 
 exit( header('Location:/profile'));
 

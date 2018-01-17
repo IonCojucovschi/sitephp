@@ -2,12 +2,23 @@
 include_once 'setting.php';
 
 session_start();
-$CONNECT=mysqli_connect(HOST,USER,PASS,DB);
-if($CONNECT){
-////echo 'ok';
-}else{
-	echo 'error';
+$CONNECT=mysqli_connect(HOST,USER,PASS,DB);/////create connection to data base
+
+if($_SESSION['USER_LOGIN_IN']!=1 and $_COOKIE['user']){
+
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`pasword`='$_COOKIE[user]"));
+
+$_SESSION['USER_ID']=$Row['id'];
+$_SESSION['USER_NAME']=$Row['name'];
+$_SESSION['USER_SURNAME']=$Row['surname'];
+$_SESSION['USER_EMAIL']=$Row['Email'];
+$_SESSION['USER_LOGIN']=$Row['login'];
+$_SESSION['USER_PASWORD']=$Row['pasword'];
+$_SESSION['USER_ACTIVE']=$Row['active'];
+$_SESSION['USER_LOGIN_IN']=1;
+
 }
+
 
 
 
@@ -22,7 +33,7 @@ $Page=array_shift($URL_Parts);
 $Module=array_shift($URL_Parts);
 
 
-if(empty($Module)){
+if(!empty($Module)){
 	$Param=array();
 	for($i=0;$i<count($URL_Parts);$i++){
 		$Param[$URL_Parts[$i]]=$URL_Parts[++$i];
@@ -38,14 +49,15 @@ else if($Page=='account') include('Form/account.php');
 else if($Page=='addbook') include('Pages/addbook.php');
 else if($Page=='book') include('Form/book.php');
 else if($Page=='profile') include('Pages/profile.php');
+else if($Page=='api') include('Pages/api.php');
 
 
 
 
 function ULogin($p1){
 
-if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','index');
-else if ($_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru utilizatori.','index');
+if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','/');
+else if ($_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru utilizatori.','/');
 
 }
 
@@ -106,14 +118,13 @@ function Menu(){
    if($_SESSION['USER_LOGIN_IN']!=1) $Menu='<a  href="/register" class="menu">Register</a>	
           <a href="/login"  class="menu">Login</a>';
       else $Menu='<a  href="/addbook" class="menu">Add Books</a>
-      	<a  href="/profile" class="menu">Profil</a>	';
+      	<a  href="/profile" class="menu">Profil</a>
+      	<a  href="/account/logout" class="menu , logout">Iesi</a>		';
 
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
 		  <a href="/" class="menu">HOME</a>	
-          '.$Menu.'
-          <div class="menu">menu</div>	
-        </div>
+          '.$Menu.'          
 	</header>';
 }
 

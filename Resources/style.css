@@ -104,6 +104,10 @@ text-decoration: none;
 opacity: 0.5;
 
 }
+.logout{
+	color: #f44242;
+	margin-left: 50px;
+}
 
 
 .MessageBlock{

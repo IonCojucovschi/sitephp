@@ -17,5 +17,5 @@ header('Content-type: image/gif');
 imagegif($im);
 imagedestroy($im);
 
-
+session_destroy();
 ?>
