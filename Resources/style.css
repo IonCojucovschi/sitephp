@@ -14,28 +14,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 	display: block;
 }
 body {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	background: #afc6ea;
-	/*align-content: center;*/
-    justify-content: center;
-}
-.wrapper_all{
 	font: 12px/18px Arial, sans-serif;
 	height: 100%;
-	width: 1200px;
 	background: #afc6ea;
-	
 }
-
-
 .wrapper {
-	margin-right: 120px;
-	margin-left: 240px;
-	min-width: 700px;
+	min-width: 300px;
+	max-width: 1800px;
+	margin-right: 10%;
+	margin-left: 20%;
+	min-height: 100%;
 	height: auto !important;
-	min-height: 1000px;
+	height: 100%;
 }
 
 
@@ -45,6 +35,7 @@ body {
 	padding: 20px;
 	height: 150px;
 	background: url(/Resources/img/header.png);
+   
     background-repeat: no-repeat;
 }
 
@@ -74,13 +65,13 @@ body {
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
 .left-sidebar {
-	min-height: 1000px;
+	height: 100%;
 	padding-top:30px; 
 	float: left;
-	width: 230px;
+	width: 19%;
 	/*margin-bottom: 110px;*/
 	position: relative;
-	background: #6c9ae2;
+	background: #B5E3FF;
 }
 
 
@@ -88,8 +79,9 @@ body {
 -----------------------------------------------------------------------------*/
 .footer {
 	margin: -100px auto 0;
-	width: 100%;
-	height: 200px;
+	min-width: 300px;
+	max-width: 1800px;
+	height: 100px;
 	background: #6c9ae2;
 	position: relative;
 }

@@ -4,7 +4,7 @@ Head('Pagina principala');
 ?>
 
 <body>
-<div class="wrapper_all">
+
 
 <aside class="left-sidebar">
 			
@@ -16,8 +16,7 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();  
-    MessageShow(); ?>
+    <?php Menu();   ?>
 	<!-- .header-->
 
 	<div class="middle">
@@ -42,6 +41,6 @@ Head('Pagina principala');
 <footer class="footer">
 	ReadAboock : every dey is mor beautifull with me!!!!
 </footer><!-- .footer -->
-</div>
+
 </body>
 </html>

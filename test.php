@@ -1,106 +1,44 @@
-
-<style type="text/css">
-@media only screen and (max-width: 480px) {
-  table {
-    display: block !important;
-    width: 100% !important;
-  }
-  
-  td {
-    width: 480px !important;
-  }
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
 }
-</style>
-<body style="font-family: 'Malgun Gothic', Arial, sans-serif; margin: 0; padding: 0; width: 100%; -webkit-text-size-adjust: none; -webkit-font-smoothing: antialiased;">
-  <table width="100%" bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="0" id="background" style="height: 100% !important; margin: 0; padding: 0; width: 100% !important;">
-    <tr>
-      <td align="center" valign="top">
-        <table width="600" border="0" bgcolor="#F6F6F6" cellspacing="0" cellpadding="20" id="preheader">
-          <tr>
-            <td valign="top">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td valign="top" width="600">
-                    <div class="preheader_links">
-                      <p style="color: #666666; font-size: 10px; line-height: 22px; text-align: right;">Dezactiveaza mesaje de genu? <a href="javascript:void(0)" :hover="text-decoration: underline;" onclick="myEvent();" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" style="color: #666666; font-weight: bold; text-decoration: none;">Click here</a></p>
-                    </div>
-                  </td>
-                 </tr>
-                 <tr>
-                  <td valign="top" width="600">
-                    <div class="logo">
-                      <a href="javascript:void(0)" onclick="myEvent();" onmouseover="this.style.color='#666666'" onmouseout="this.style.color='#514F4E'" style="color: #514F4E; font-size: 18px; font-weight: bold; text-align: left; text-decoration: none;">readAbook inspira</a>
-                    </div>
-                  </td>
-                </tr>
-            </table>
-            </td>
-          </tr>
-        </table>
-        <!-- // END #preheader -->
-
-        <table width="600" border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" id="header_container">
-          <tr>
-            <td align="center" valign="top">
-              <table width="100%" border="0" bgcolor="#2e41ad" cellspacing="0" cellpadding="0" id="header">
-                <tr>
-                  <td valign="top" class="header_content">
-                    <h1 style="color: #F4F4F4; font-size: 24px; text-align: center;">Link-ul de activare</h1>
-                  </td>
-                </tr>
-              </table>
-              <!-- // END #header -->
-            </td>
-          </tr>
-        </table>
-        <!-- // END #header_container -->
-
-        <table width="600" border="0" bgcolor="#909ff4" cellspacing="0" cellpadding="20" id="body_container">
-          <tr>
-            <td align="center" valign="top" class="body_content">
-              <table width="100%" border="0" cellspacing="0" cellpadding="20">
-                <tr>
-                  <td valign="top">
-                    <h2 style="color: #FFFFFF; font-size: 22px; text-align: center;">Pentru activare</h2>
-                    <p style="color: #FFFFFF; font-size: 14px; line-height: 22px; text-align: center;">Este suficient sa faceti click pe buton.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center">
-                    <div>
-                    <a href="javascript:void(0)" onclick="myEvent();" style="background-color:#474544;border-radius:3px;color:#FFFFFF;display:inline-block;font-family:'Helvetica',Arial,sans-serif;font-size:13px;height:45px;line-height:45px;text-align:center;text-decoration:none;text-transform:uppercase;width:150px;-webkit-text-size-adjust:none;mso-hide:all;" onmouseover="this.style.backgroundColor='#514F4E'" onmouseout="this.style.backgroundColor='#474544'">Activeaza</a>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-
-
-
-
-
-
-
-
-      
-      
-      <table width="600" border="0" cellspacing="0" cellpadding="20" id="body_info_container">
-        <tr>
-          <td align="center" valign="top" class="body_info_content">
-            <table width="100%" border="0" cellspacing="0" cellpadding="20">
-              <tr>
-                <td valign="top">
-                  <h2 style="color: #474544; font-size: 20px; text-align: center;">Va multumim!</h2>
-                  <p style="color: #666666; font-size: 14px; line-height: 22px; text-align: left;"> Activation linck sucessfull send.</p>
-              </td>
-          </tr>
-      </table>
-  </td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</body>
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>

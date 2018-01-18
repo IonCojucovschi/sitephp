@@ -4,9 +4,9 @@ include_once 'setting.php';
 session_start();
 $CONNECT=mysqli_connect(HOST,USER,PASS,DB);/////create connection to data base
 
-if($_SESSION['USER_LOGIN_IN']==1 and $_COOKIE['user']){
+if($_SESSION['USER_LOGIN_IN']!=1 and $_COOKIE['user']){
 
-$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`login`='$_COOKIE[user]')"));
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`pasword`='$_COOKIE[user]"));
 
 $_SESSION['USER_ID']=$Row['id'];
 $_SESSION['USER_NAME']=$Row['name'];
@@ -53,6 +53,7 @@ else if($Page=='api') include('Pages/api.php');
 
 
 
+
 function ULogin($p1){
 
 if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','/');
@@ -74,7 +75,7 @@ else if ($p1==3) $p1='Informatie';
 if($p3) $_SERVER['HTTP_REFERER']=$p3;
 
 $_SESSION['message']='<div class="MessageBlock"><b>'.$p1.'</b>'.$p2.'</div>';
-$server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/";
+$server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
 exit(header('Location:'.$server));
 }
 
@@ -114,15 +115,11 @@ function Head($p1){
 
 function Menu(){
 
-   if($_SESSION['USER_LOGIN_IN']!=1) 
-   	$Menu='<a  href="/register" class="menu">Register</a>	
+   if($_SESSION['USER_LOGIN_IN']!=1) $Menu='<a  href="/register" class="menu">Register</a>	
           <a href="/login"  class="menu">Login</a>';
-    else $Menu='<a  href="/addbook" class="menu">Add Books</a>
+      else $Menu='<a  href="/addbook" class="menu">Add Books</a>
       	<a  href="/profile" class="menu">Profil</a>
-      	<a  href="/account/logout" class="menu , logout">Iesi</a>';
-
-      	// 		<form method="POST" action="account/logout"> <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Log in"></p>
-    			// </form>
+      	<a  href="/account/logout" class="menu , logout">Iesi</a>		';
 
 	echo '<header class="header">
 		<div style="padding-top: 120px;">

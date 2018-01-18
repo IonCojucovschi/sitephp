@@ -4,7 +4,7 @@ Head('Inregistrare');
 ?>
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 <body>
-<div class="wrapper_all">
+
 <div class="wrapper" >
 
     <?php Menu();  ?>
@@ -71,6 +71,5 @@ Head('Inregistrare');
 
 <?php  Footer(); ?>
 <!-- adaogam footerul -->
-</div>
 </body>
 </html>
