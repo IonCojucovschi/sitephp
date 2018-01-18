@@ -71,10 +71,13 @@ exit( header('Location: /login'));
 
 	/// cu functia data se poate transmite daca activam modului din php.ini  dar nu toate serverele sustin asa posibilitati. si + este nesigur de asta.
 	///mail($_POST['email'],'Inregistrarea pe blogul readAbook.','Link-ul de activare a contului: http://readabook.16mb.com/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
-	$Code=$_POST['login'];
+	$Code=substr(base64_encode($_POST['login']), 0,-1) ;///$_POST['login'];
+
+	///substr(base64_encode($_POST['login']), 0,-1) ;
 
 	require 'PHPMailer/PHPMailerAutoload.php';
 	require 'credential.php';
+	///require 'Components/MailBody.php';
 
 	$mail = new PHPMailer;
 
@@ -98,7 +101,9 @@ exit( header('Location: /login'));
 
 	$mail->Subject = 'Activation Message.';
 
-	$mail->Body    = '<b>http://readabook.16mb.com/activate/code/'.$Code;
+    $linq='http://readabook.16mb.com/account/activate/code/'.$Code;
+
+	$mail->Body ='Pentru activarea contului faceti click <a href="'.$linq.'">aici</a>';/// MailActivation($linq);
 
 	///cu pricoale
 	///substr($Code,-5).substr($Code,0,-5).'</b>';
@@ -147,18 +152,19 @@ exit( header('Location: /login'));
    MesageSend(3,' valoarea Session[userlogin]='.$_SESSION['USER_LOGIN_IN'],'/profile');
     ///exit( header('Location:/profile'));
 
-}elseif ($Module=='activate' and $Param['code']) {
+}elseif ($Module=='activate' and $Param['code']) {/// 
 	
 	if(!$_SESSION['USER_ACTIVE_EMAIL'])
 	{
-		$Login=$Param['code'];//substr($Param['code'],5).substr($Param['code'], 0,5);
-		$Email=mysqli_query($CONNECT, "SELECT `Email` FROM `Users`  WHERE (`login`='$Login')");
+		$Login= base64_decode($Param['code']);                 ///$Param['code'];
+		/////substr($Param['code'],5).substr($Param['code'], 0,5);
+		$Email=mysqli_fetch_assoc(mysqli_query($CONNECT, "SELECT `Email` FROM `Users`  WHERE login='$Login'"));
 		
-		if(strpos($Email,'@')!=false){
-			mysqli_query($CONNECT, "UPDATE `Users` SET `active`='1' WHERE (`login`='$Email')");
+		if(strpos($Email['Email'],'@')!=false){
+			mysqli_query($CONNECT, "UPDATE `Users` SET active=1 WHERE Email='$Email[Email]'");
              
 			$_SESSION['USER_ACTIVE_EMAIL']=$Email;
-            MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');
+            MesageSend(3,'Email-ul: <b>'.$Email['Email'].'</b> este confirmat.','/login');
 		}else {MesageSend(1,'Adresa email nu este confirmata.','/login');}
 	}else {MesageSend(1,'Adresa emai <b>'.$_SESSION['USER_ACTIVE_EMAIL'].' este deja confirmata </b>','/login');}
 

@@ -53,7 +53,6 @@ else if($Page=='api') include('Pages/api.php');
 
 
 
-
 function ULogin($p1){
 
 if($p1<=0 and $_SESSION['USER_LOGIN_IN']!=$p1) MesageSend(1,'Pagina data este disponibila doar pentru vizitatori.','/');
