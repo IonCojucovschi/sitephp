@@ -19,7 +19,7 @@ Head('Login');
             <input class="registercomponent" id="remember" type="checkbox" name="remember"> Retineti contul <br>
 
        
-        <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Create New User"></p>
+        <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Log in"></p>
      </form>'); ?>
  
 
