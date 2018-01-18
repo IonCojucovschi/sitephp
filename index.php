@@ -115,11 +115,15 @@ function Head($p1){
 
 function Menu(){
 
-   if($_SESSION['USER_LOGIN_IN']!=1) $Menu='<a  href="/register" class="menu">Register</a>	
+   if($_SESSION['USER_LOGIN_IN']!=1) 
+   	$Menu='<a  href="/register" class="menu">Register</a>	
           <a href="/login"  class="menu">Login</a>';
-      else $Menu='<a  href="/addbook" class="menu">Add Books</a>
+    else $Menu='<a  href="/addbook" class="menu">Add Books</a>
       	<a  href="/profile" class="menu">Profil</a>
-      	<a  href="/account/logout" class="menu , logout">Iesi</a>		';
+      	<a  href="/account/logout" class="menu , logout">Iesi</a>';
+
+      	// 		<form method="POST" action="account/logout"> <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Log in"></p>
+    			// </form>
 
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
