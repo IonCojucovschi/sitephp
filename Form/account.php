@@ -76,32 +76,56 @@ if($Row){
 
 $Code=$_POST['login'];
 
-///mail($_POST['email'],'Inregistrarea pe blogul readAbook.','Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
+///mail($_POST['email'],'Inregistrarea pe blogul readAbook.','Link-ul de activare a contului: http://readabook.16mb.com/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
 
 
-include "lib/class.phpmailer.php";
+require 'PHPMailer/PHPMailerAutoload.php';
+require 'credential.php';
 
-$mail-> new PHPMailer();
+$mail = new PHPMailer;
 
-$mail->IsSMTP();
-$mail->Host="smtp.gmail.com";
-$mail->SMTPAuth=true;
-$mail->SMTPSecure->"ssl";
-$mail->Port=465;
+$mail->SMTPDebug = 4;       // Enable verbose debug output
 
-$mail->Username="cojucovschi@gmail.com";
-$mail->Password="4ion1994";
-$mail->SerFrom("readAbook.com administrator site.");
-$mail->Subject="Email validation account.";
-$mail->MsgHTML($body);////if you are a html file to sent to this email;
+$mail->isSMTP();     // Set mailer to use SMTP
 
-$address=$_POST['email'];
-$mail->AddAddress($address,"Name Surname");
+$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+
+$mail->SMTPAuth = true;          // Enable SMTP authentication
+
+$mail->Username = EMAIL;    // SMTP username
+
+$mail->Password = PASS;    // SMTP password
+
+$mail->SMTPSecure = 'tls';    // Enable TLS encryption, `ssl` also accepted
+
+$mail->Port = 587;          // TCP port to connect to
+
+
+
+$mail->setFrom(EMAIL, 'readAbook.md');
+$mail->addAddress($_POST['email']);     // Add a recipient
+$mail->addReplyTo('No-Reply@reaadabook.com');
+
+
+// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+
+//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+$mail->isHTML(true);                                  // Set email format to HTML
+
+
+
+$mail->Subject = 'Here is the subject';
+
+$mail->Body    = '<b>http://readabook.16mb.com/activate/code/'.substr($Code,-5).substr($Code,0,-5).'</b>';
+
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
 
 if ($mail->Send()) {
  MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.'); ;
  } else {
-  MesageSend(3,': Din pacate inregistrarea nu sa finisat. Masajul de activare nu sa transmis la adresa <b>'.$_POST['email'].'</b>.');
+ MesageSend(3,': Din pacate inregistrarea nu sa finisat. Masajul de activare nu sa transmis la adresa <b>'.$_POST['email'].'</b>.');
  }
 
 ///cu confirmarea mail treb de mai vazut ,,,nu se transmite pe posta poate tre de schimbat alta functie,,, o sa vedem ce facem....
