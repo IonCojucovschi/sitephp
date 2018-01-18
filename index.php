@@ -4,9 +4,9 @@ include_once 'setting.php';
 session_start();
 $CONNECT=mysqli_connect(HOST,USER,PASS,DB);/////create connection to data base
 
-if($_SESSION['USER_LOGIN_IN']!=1 and $_COOKIE['user']){
+if($_SESSION['USER_LOGIN_IN']==1 and $_COOKIE['user']){
 
-$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`pasword`='$_COOKIE[user]"));
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`name`,`surname`,`Email`,`login`,`pasword`,`active` FROM `Users` WHERE (`login`='$_COOKIE[user]')"));
 
 $_SESSION['USER_ID']=$Row['id'];
 $_SESSION['USER_NAME']=$Row['name'];
@@ -75,7 +75,7 @@ else if ($p1==3) $p1='Informatie';
 if($p3) $_SERVER['HTTP_REFERER']=$p3;
 
 $_SESSION['message']='<div class="MessageBlock"><b>'.$p1.'</b>'.$p2.'</div>';
-$server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "";
+$server = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/";
 exit(header('Location:'.$server));
 }
 

@@ -142,10 +142,10 @@ exit( header('Location: /login'));
 
   if($_REQUEST['remember']){
      
-       setcookie('user',$_POST['pasword'],strtotime('30 days'),'/');
+       setcookie('user',$_POST['login'],strtotime('30 days'),'/');
     }
-
-    exit( header('Location:/profile'));
+   MesageSend(3,' valoarea Session[userlogin]='.$_SESSION['USER_LOGIN_IN'],'/profile');
+    ///exit( header('Location:/profile'));
 
 }elseif ($Module=='activate' and $Param['code']) {
 	
