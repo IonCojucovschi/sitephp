@@ -12,7 +12,7 @@ exit( header('Location: /login'));
 }
 
 
-if($Module=='register' and  $_POST['enter']){
+elseif($Module=='register' and  $_POST['enter']){
 ULogin(0);///pagina e pentru vizitatori
 // echo var_dump($_POST);
 
@@ -45,9 +45,6 @@ $_POST['captcha']==FormChars($_POST['captcha']);
 
 
  if(!$_POST['name'] or !$_POST['surname'] or !$_POST['email']  or !$_POST['login'] or !$_POST['pasword'] or !$_POST['captcha']) {
-// //echo var_dump($_SESSION);
-///['captcha'];
-///echo md5($Random);   //scopul este de a verifica criptarea numarului daca este corecta..
    MesageSend(1,' Forma are celule goale.');
 }
 
@@ -59,8 +56,7 @@ $_POST['captcha']==FormChars($_POST['captcha']);
 }
 
  $Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `login` FROM `Users` WHERE (`login`='$_POST[login]')"));
- //echo var_dump($Row);
-// //verificam unicitatea loginului 
+
 if($Row){
 	MesageSend(1,' Loginul de forma <b>'.$_POST['login'].'</b> exista deja!');
  }
@@ -74,8 +70,8 @@ if($Row){
 
 ///transmite linkul pe emailul dat cu ajutorul SMTP
 
-$Code=$_POST['login'];
-
+$Code=$_POST['email'];
+/// cu functia data se poate transmite daca activam modului din php.ini  dar nu toate serverele sustin asa posibilitati. si + este nesigur de asta.
 ///mail($_POST['email'],'Inregistrarea pe blogul readAbook.','Link-ul de activare a contului: http://readabook.16mb.com/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
 
 
@@ -128,30 +124,22 @@ if ($mail->Send()) {
  MesageSend(3,': Din pacate inregistrarea nu sa finisat. Masajul de activare nu sa transmis la adresa <b>'.$_POST['email'].'</b>.');
  }
 
-///cu confirmarea mail treb de mai vazut ,,,nu se transmite pe posta poate tre de schimbat alta functie,,, o sa vedem ce facem....
 
-// $Code=$_POST['login'];
-
-// mail($_POST['email'],'Inregistrarea pe blogul readAbook.',
-// 'Link-ul de activare a contului: http//readabook.esy.es/activate/code/'.substr($Code,-5).substr($Code,0,-5),'From : cojucovschi@bk.ru');
-// MesageSend(3,': Inregistrarea sa finisat cu succes. Masajul de activare a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.');
-
-
-
-}else if ($Module=='activate' and $Param['code']) {
+}elseif ($Module=='activate' and $Param['code']) {
 	if(!$_SESSION['USER_ACTIVE_EMAIL'])
 	{
 		$Email=substr($Param['code'],5).substr($Param['code'], 0,5);
-		if(strpos($Email,'@')!==false){
-			mysqli_query($CONNECT, "UPDATE `Users` SET `active`='1' WHERE `Email`='$Email'");
+		MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');
+		// if(strpos($Email,'@')!==false){
+		// 	mysqli_query($CONNECT, "UPDATE `Users` SET `active`='1' WHERE `Email`='$Email'");
 
-			$_SESSION['USER_ACTIVE_EMAIL']=$Email;
-            MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');
-		}else MesageSend(1,'Adresa email nu este confirmata.','/login');
+		// 	$_SESSION['USER_ACTIVE_EMAIL']=$Email;
+  //           MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');
+		// }else MesageSend(1,'Adresa email nu este confirmata.','/login');
 	}else MesageSend(1,'Adresa emai <b>'.$_SESSION['USER_ACTIVE_EMAIL'].' este deja confirmata </b>','/login');
 
 
-}else if ($Module=='login' and $_POST['enter']){
+} elseif ($Module=='login' and $_POST['enter']){
 
 $_POST['login']==FormChars($_POST['login']);
 $_POST['pasword']==GenPasword(FormChars($_POST['pasword']),$_POST['login']);
