@@ -5,7 +5,7 @@ Head('Login');
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 
 <body>
-
+<div class="wrapper_all">
 <div class="wrapper" >
 
     <?php Menu();   ?>
@@ -29,5 +29,7 @@ Head('Login');
      
 <?php  Footer(); ?>
 <!-- adaogam footerul -->
+
+</div>
 </body>
 </html>
