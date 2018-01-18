@@ -18,22 +18,22 @@
         <table width="600" border="0" bgcolor="#F6F6F6" cellspacing="0" cellpadding="20" id="preheader">
           <tr>
             <td valign="top">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td valign="top" width="600">
                     <div class="preheader_links">
                       <p style="color: #666666; font-size: 10px; line-height: 22px; text-align: right;">Dezactiveaza mesaje de genu? <a href="javascript:void(0)" :hover="text-decoration: underline;" onclick="myEvent();" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" style="color: #666666; font-weight: bold; text-decoration: none;">Click here</a></p>
                     </div>
                   </td>
-                 </tr>
-                 <tr>
+                </tr>
+                <tr>
                   <td valign="top" width="600">
                     <div class="logo">
                       <a href="javascript:void(0)" onclick="myEvent();" onmouseover="this.style.color='#666666'" onmouseout="this.style.color='#514F4E'" style="color: #514F4E; font-size: 18px; font-weight: bold; text-align: left; text-decoration: none;">readAbook inspira</a>
                     </div>
                   </td>
                 </tr>
-            </table>
+              </table>
             </td>
           </tr>
         </table>
@@ -76,15 +76,6 @@
           </td>
         </tr>
       </table>
-
-
-
-
-
-
-
-
-      
       
       <table width="600" border="0" cellspacing="0" cellpadding="20" id="body_info_container">
         <tr>
@@ -94,13 +85,3 @@
                 <td valign="top">
                   <h2 style="color: #474544; font-size: 20px; text-align: center;">Va multumim!</h2>
                   <p style="color: #666666; font-size: 14px; line-height: 22px; text-align: left;"> Activation linck sucessfull send.</p>
-              </td>
-          </tr>
-      </table>
-  </td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</body>
