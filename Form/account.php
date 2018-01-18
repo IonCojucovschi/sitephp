@@ -1,6 +1,6 @@
 <?php
 
-if($Module=='logout' and $_SESSION['USER_ACTIVE_EMAIL']!=1){
+if($Module=='logout' and $_SESSION['USER_LOGIN_IN']==1){
     
      if($_COOKIE['user']) {
      	setcookie('user','',time()-700000,'/login');
@@ -152,10 +152,10 @@ exit( header('Location: /login'));
 	if(!$_SESSION['USER_ACTIVE_EMAIL'])
 	{
 		$Login=$Param['code'];//substr($Param['code'],5).substr($Param['code'], 0,5);
-		$Email=mysqli_query($CONNECT, "SELECT `Email` FROM `Users`  WHERE `login`='$Login'");
+		$Email=mysqli_query($CONNECT, "SELECT `Email` FROM `Users`  WHERE (`login`='$Login')");
 		
-		if(strpos($Email,'@')!==false){
-			mysqli_query($CONNECT, "UPDATE `Users` SET `active`='1' WHERE `login`='$Email'");
+		if(strpos($Email,'@')!=false){
+			mysqli_query($CONNECT, "UPDATE `Users` SET `active`='1' WHERE (`login`='$Email')");
              
 			$_SESSION['USER_ACTIVE_EMAIL']=$Email;
             MesageSend(3,'Email-ul: <b>'.$Email.'</b> este confirmat.','/login');

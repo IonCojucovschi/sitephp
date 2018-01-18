@@ -16,7 +16,8 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();   ?>
+    <?php Menu();  
+    MessageShow(); ?>
 	<!-- .header-->
 
 	<div class="middle">
