@@ -50,6 +50,7 @@ else if($Page=='addbook') include('Pages/addbook.php');
 else if($Page=='book') include('Form/book.php');
 else if($Page=='profile') include('Pages/profile.php');
 else if($Page=='api') include('Pages/api.php');
+else if($Page=='restore') include('Pages/restore.php');
 
 
 
@@ -115,14 +116,14 @@ function Head($p1){
 function Menu(){
 
    if($_SESSION['USER_LOGIN_IN']!=1) 
-   	$Menu='<a  href="/register" class="menu">Register</a>	
-          <a href="/login"  class="menu">Login</a>';
-    else $Menu='<a  href="/addbook" class="menu">Add Books</a>
+   	$Menu='<a  href="/register" class="menu">Inregistrare</a>	
+          <a href="/login"  class="menu">Logare</a>
+          <a  href="/restore" class="menu">Restabilire Parola</a>	';
+    else $Menu='<a  href="/addbook" class="menu">Adaoga Carti</a>
       	<a  href="/profile" class="menu">Profil</a>
       	<a  href="/account/logout" class="menu , logout">Iesi</a>';
 
-      	// 		<form method="POST" action="account/logout"> <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Log in"></p>
-    			// </form>
+      	
 
 	echo '<header class="header">
 		<div style="padding-top: 120px;">
@@ -171,6 +172,17 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 }
 
 
+///function for know how many books we hawe in data base
+function BookNumber($p1=''){
+
+	if($p1==''){
+	 $result= mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT  COUNT(id) FROM  `books` WHERE 1==1"));
+	echo $result;
+	}else{
+		$result=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT COUNT(id) FROM `books` WHERE category='$p1'"));
+	     echo $result;
+	}
+}
 
 
 ?>
