@@ -14,13 +14,13 @@ if(!$_POST['login'] and !$_POST['captcha']) MesageSend(1,' OOps forma este indep
 if($_SESSION['captcha']!=md5($_POST['captcha'])) MesageSend(1,'Codul captcha este indeplinit gresit');
 
 
-$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`Email`  FROM `Users` WHERE (`login`='$_POST[login]')"));
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `id`,`Email` FROM `Users` WHERE login='$_POST[login]'"));
 
 if(!$Row['Email'])MesageSend(3,'Nu este utilizator cu asa date');
 ////transmitem mesajul de restabilire a parolei 
 ////transmitem mesajul de restabilire a parolei 
 
-	$Code=base64_encode($_POST['login']) ;///$_POST['login'];
+	$Code=base64_encode($Row['id']) ;///$_POST['login'];
 
 	require 'PHPMailer/PHPMailerAutoload.php';
 	require 'credential.php';
@@ -49,27 +49,30 @@ if(!$Row['Email'])MesageSend(3,'Nu este utilizator cu asa date');
 
 		if ($mail->Send()) {
 
-		 MesageSend(3,': Mesajul de restabilire a contului a fost transmis la adresa <b>'.$_POST['email'].'</b>.'); ;
+		 MesageSend(3,': Mesajul de restabilire a contului a fost transmis la adresa <b>'.HideEmail($_POST['email']).'</b>.'); ;
 
 		 } else {
 
-		 MesageSend(3,': Din pacate restabilirea este imposibila. Masajul de restabilire a contului nu sa transmis la adresa <b>'.$_POST['email'].'</b>.');
+		 MesageSend(3,': Din pacate restabilirea este imposibila. Masajul de restabilire a contului nu sa transmis la adresa <b>'.HideEmail($_POST['email']).'</b>.');
 
 		 }
-
-
-
-
-
-
-
-
-
 
 
 }elseif($Module='restore' and $Param['code']){
 
 //////TO DO
+$IdValue=base64_decode($Param['code']);
+$Row=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `login` FROM `Users` WHERE `id`='$IdValue'"));
+
+if(!$Row['login']) MesageSend(1,': Nu se poate de restabilit parola. Conectati administratorul in cazuri exceptionale.');
+
+$Random=RandomeString(15);
+$_SESSION['RESTORE']=$Random;
+
+mysqli_fetch_assoc(mysqli_query($CONNECT, "UPDATE `Users` SET `pasword`='$Random' WHERE login='$Row[login]'"));
+MesageSend(3,'Parola este modificata cu succes.Pentru aceasta utilizati noua parola <b>$Random</b>. Daca aceasta nu va convine o puteti schimba din setarile profilului.','/login');
+
+
 
 
 

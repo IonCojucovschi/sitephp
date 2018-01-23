@@ -185,4 +185,28 @@ function BookNumber($p1=''){
 }
 
 
+
+
+/////Helper function for worck
+
+
+function RandomeString($p1){
+  $Char='1234567890qwertyyuioplkjhgfdsazxcvbnm';
+  for($i=0;$i<$p1;$i++) $String.=$Char[rand(0,strlen($Char)-1)];
+  	return $String;
+
+}
+
+function HideEmail($p1){
+$Explode=explode('@', $p1);
+return $Explode[0].'@'.'xxxxxx';
+
+
+}
+
+
+
+
+
+
 ?>
