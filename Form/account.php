@@ -36,7 +36,7 @@ if(!$Row['Email'])MesageSend(3,'Nu este utilizator cu asa date');
 	$mail->SMTPSecure = 'tls';    // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587;          // TCP port to connect to
 	$mail->setFrom('nu-raspunde@gmail.com', 'readAbook.md');
-	$mail->addAddress($_POST['email']);     // Add a recipient
+	$mail->addAddress($Row['Email']);     // Add a recipient
 	$mail->addReplyTo('No-Reply@reaadabook.com');
 	$mail->isHTML(true);                                  // Set email format to HTML
 	$mail->Subject = 'Activation Message.';
@@ -49,11 +49,11 @@ if(!$Row['Email'])MesageSend(3,'Nu este utilizator cu asa date');
 
 		if ($mail->Send()) {
 
-		 MesageSend(3,': Mesajul de restabilire a contului a fost transmis la adresa <b>'.HideEmail($_POST['email']).'</b>.'); ;
+		 MesageSend(3,': Mesajul de restabilire a contului a fost transmis la adresa <b>'.HideEmail($Row['Email']).'</b>.'); ;
 
 		 } else {
 
-		 MesageSend(3,': Din pacate restabilirea este imposibila. Masajul de restabilire a contului nu sa transmis la adresa <b>'.HideEmail($_POST['email']).'</b>.');
+		 MesageSend(3,': Din pacate restabilirea este imposibila. Masajul de restabilire a contului nu sa transmis la adresa <b>'.HideEmail($Row['Email']).'</b>.');
 
 		 }
 
