@@ -11,6 +11,40 @@ if($Module=='logout' and $_SESSION['USER_LOGIN_IN']==1){
 
    exit( header('Location: /login'));
 }
+
+if($Module=='edit' and $_POST['enter']){
+
+  ULogin(1);
+    $_POST['name']==FormChars($_POST['name']);
+	$_POST['surname']==FormChars($_POST['surname']);
+	//$_POST['telephone']==FormChars($_POST['telephone']);
+	$_POST['email']==FormChars($_POST['email']);
+	//$_POST['faculty']==FormChars($_POST['faculty']);
+	//$_POST['speciality']==FormChars($_POST['speciality']);
+	//$_POST['birthDate']==FormChars($_POST['birthDate']);
+	//$_POST['matriculationDate']==FormChars($_POST['matriculationDate']);
+	//$_POST['gender']==FormChars($_POST['gender']);
+	$_POST['login']==FormChars($_POST['login']);
+	$_POST['pasword']==FormChars($_POST['pasword']);
+	$_POST['pasword']==GenPasword($_POST['pasword'],$_POST['login']);
+	//$_POST['coments']==FormChars($_POST['coments']);
+    
+     if(!$_POST['name'] or !$_POST['surname'] or !$_POST['email']  or !$_POST['login'] or !$_POST['pasword'] or !$_POST['captcha']) {
+	   MesageSend(1,' Forma are celule goale.');
+	}
+
+    mysqli_query($CONNECT,"UPDATE `Users` SET `name`='$_POST[name]',`name`='$_POST[surname]',`Email`='$_POST[email]',`login`='$_SESSION[USER_LOGIN]',`pasword`='$_POST[pasword]' WHERE id='$_SESSION[USER_ID]'");
+
+	$_SESSION['USER_NAME']=$_POST['name'];
+	$_SESSION['USER_SURNAME']=$_POST['surname'];
+	$_SESSION['USER_EMAIL']=$_POST['email'];
+	$_SESSION['USER_PASWORD']=$_POST['pasword'];
+	$_SESSION['USER_ACTIVE']=$_POST['login'];
+
+    MesageSend(3,'Datele sau reinoit cu succes','/profile');
+}
+
+
   ULogin(0);///pagina e pentru vizitatori
 
 
@@ -32,7 +66,7 @@ if($Module=='restore' and $_POST['enter']){
 	if(!$Row['Email'])MesageSend(3,'Nu este utilizator cu asa date');
 	////transmitem mesajul de restabilire a parolei 
 	////transmitem mesajul de restabilire a parolei 
-
+    ////there may aper eror vhen ancode apear = at last simbol ,,,,may be a bug or not 
     $Code=base64_encode($Row['id']) ;///$_POST['login'];
 
     require 'PHPMailer/PHPMailerAutoload.php';
@@ -88,24 +122,6 @@ if($Module=='restore' and $Param['code']){
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ////  register form compiller 
