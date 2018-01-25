@@ -11,7 +11,7 @@ Head('Restabilire parola');
     <?php Menu();   ?>
 	<!-- .header-->
     <?php  Content('<h2>Logation Form</h2>'.MessageShow().'
-    <form id="", method="POST" action="account/restore" onsubmit="return validateForm()">
+    <form id="", method="POST" action="/account/restore" onsubmit="return validateForm()">
            <label class="registercomponent" for="login">Login<em>*</em></label>
             <input class="registercomponent" id="login" name ="login"  autofocus required maxlength="10" pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
             

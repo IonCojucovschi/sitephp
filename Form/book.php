@@ -30,7 +30,7 @@ $book="Resources/books/".$_POST['category']."/".$_FILES['bookcontent']['name'];
 
 /// query to add a boo on db
 
-mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','','','$image','$book')");
+mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','','','$book','$image')");
 
 if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
   		$msg = "Image uploaded successfully";
