@@ -41,7 +41,7 @@ after password put this
 <?php
 if($Module='restore' and $Param['code'] and substr($_SESSION['RESTORE'], 0,4)=='wait') MesageSend(1,'Dvs deja ati transmis cererea de restabilire a parolei. Confirmati email-ul dvs <b>'.substr($_SESSION['RESTORE'],5).'</b>');
 
-if($Module='restore' and $_SESSION['RESTORE'] and substr($_SESSION['RESTORE'], 0,4)=='wait') MesageSend(1,'Parola dvs a fost schimbata. Pentru logare folositi noua parola. <b>'.$_SESSION['RESTORE'].'</b>','/login');
+if($Module='restore' and $_SESSION['RESTORE'] and substr($_SESSION['RESTORE'], 0,4)!='wait') MesageSend(1,'Parola dvs a fost schimbata. Pentru logare folositi noua parola. <b>'.$_SESSION['RESTORE'].'</b>','/login');
 
 
 
