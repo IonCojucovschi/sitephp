@@ -5,11 +5,10 @@ exit( '{"error":"'.$p1.'"," "text":"'.$p2.'"}');
 
 }
 
-
+/////example for finding    /api/users/login/ion/param/id
 if($Module=='users'){
 if(!$Param['login']) Error(1,'loginul utilizatorului este null');
 if(!$Param['param']) Error(2,'parametrii de identificcare este null');
-/////forma url    /api/users/login/ion/param/id
 $Param['login']==FormChars($Param['login']);
 
 $Array= array('name','surname','id' );
@@ -31,15 +30,13 @@ $SQL=substr($SQL,0,-1);
 ///exit($SQL);
 
 
-$qr=mysqli_query($CONNECT, "SELECT $SQL FROM `Users` WHERE login='$Param[login]'");
+$qr=mysqli_fetch_assoc(mysqli_query($CONNECT, "SELECT $SQL FROM `Users` WHERE login='$Param[login]'"));
 
-echo json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE);
+if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa login');
 
+echo json_encode($qr,JSON_UNESCAPED_UNICODE);
 
-
-
-
-
+}elseif(){
 
 
 
@@ -48,6 +45,8 @@ echo json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE);
 
 
 
+
+	
 }else{
 Error(0,"metoda nu este afisata!");
 }
