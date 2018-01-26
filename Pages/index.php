@@ -18,7 +18,16 @@ Head('Pagina principala');
 
 		<div class="container">
 			<main class="content">
-				<strong>Content:</strong> Sed placerat accumsan ligula. Aliquam felis magna, congue quis, tempus eu, aliquam vitae, ante. Cras neque justo, ultrices at, rhoncus a, facilisis eget, nisl. Quisque vitae pede. Nam et augue. Sed a elit. Ut vel massa. Suspendisse nibh pede, ultrices vitae, ultrices nec, mollis non, nibh. In sit amet pede quis leo vulputate hendrerit. Cras laoreet leo et justo auctor condimentum. Integer id enim. Suspendisse egestas, dui ac egestas mollis, libero orci hendrerit lacus, et malesuada lorem neque ac libero. Morbi tempor pulvinar pede. Donec vel elit.
+				<ul style="list-style-type: none;">
+                     <?php  
+				   $books=mysqli_query($CONNECT,"SELECT `title`,`download_linq`,`image_linq` FROM `books`");
+                    while ($row=mysqli_fetch_array($books)) {
+                    	BookFoorm($row['title'],$row['image_linq'],$row['download_linq'],'sim');
+                    }
+				  ?>
+
+				</ul>
+				
 			</main><!-- .content -->
 		</div><!-- .container-->
 

@@ -158,17 +158,18 @@ function Content($p1){
 
 function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 
-	echo '<div class="book_wrapper"
+	echo '
+	<li style=" margin:10px; float: left;">
+	<div class="book_wrapper"
        style="background-image:url("'.$image_link.'");">
 	<div class="book_name">'.$book_name.'</div>
    	<button type="submit" class="details">
    	<a href="'.$detail_link.'">Detail</a>
    	</button>
-	<button type="submit" class="download">
-	<a href="'.$download_link.'">Download</a>
-	</button>
-
-</div>';
+   		<button type="submit" class="downloads" style="">
+   	<a href="'.$download_link.'">Download</a>
+   	</button>
+	</div></li>';
 }
 
 
