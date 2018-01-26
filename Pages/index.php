@@ -22,7 +22,7 @@ Head('Pagina principala');
                      <?php  
 				   $books=mysqli_query($CONNECT,"SELECT `title`,`download_linq`,`image_linq` FROM `books`");
                     while ($row=mysqli_fetch_array($books)) {
-                    	BookFoorm($row['title'],$row['image_linq'],$row['download_linq'],'sim');
+                    	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'sim');
                     }
 				  ?>
 
