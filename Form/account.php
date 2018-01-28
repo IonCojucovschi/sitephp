@@ -33,7 +33,7 @@ if($Module=='edit' and $_POST['enter']){
 	   MesageSend(1,' Forma are celule goale.');
 	}
 
-    mysqli_query($CONNECT,"UPDATE `Users` SET `name`='$_POST[name]',`name`='$_POST[surname]',`Email`='$_POST[email]',`login`='$_SESSION[USER_LOGIN]',`pasword`='$_POST[pasword]' WHERE id='$_SESSION[USER_ID]'");
+    mysqli_query($CONNECT,"UPDATE `Users` SET `name`='$_POST[name]',`name`='$_POST[surname]',`Email`='$_POST[email]',`cellphone`='Nu aveti nr.',`login`='$_SESSION[USER_LOGIN]',`pasword`='$_POST[pasword]' WHERE id='$_SESSION[USER_ID]'");
 
 	$_SESSION['USER_NAME']=$_POST['name'];
 	$_SESSION['USER_SURNAME']=$_POST['surname'];
@@ -159,7 +159,7 @@ if($Module=='register' and  $_POST['enter']){
 	if($Row){
 		MesageSend(1,' Loginul de forma <b>'.$_POST['login'].'</b> exista deja!');
 	 }
-   mysqli_query($CONNECT, "INSERT INTO `Users` VALUES ( '','$_POST[name]','$_POST[surname]','$_POST[email]', '$_POST[login]','$_POST[pasword]',0)");
+   mysqli_query($CONNECT, "INSERT INTO `Users` VALUES ( '','$_POST[name]','$_POST[surname]','$_POST[email]','Fara numar.', '$_POST[login]','$_POST[pasword]',0)");
 
 	///transmite linkul pe emailul dat cu ajutorul SMTP
 	/// cu functia data se poate transmite daca activam modului din php.ini  dar nu toate serverele sustin asa posibilitati. si + este nesigur de asta.
@@ -217,6 +217,7 @@ if($Module=='register' and  $_POST['enter']){
 	$_SESSION['USER_NAME']=$Row['name'];
 	$_SESSION['USER_SURNAME']=$Row['surname'];
 	$_SESSION['USER_EMAIL']=$Row['Email'];
+	$_SESSION['USER_NUMBER']=$Row['cellphone'];
 	$_SESSION['USER_LOGIN']=$Row['login'];
 	$_SESSION['USER_PASWORD']=$Row['pasword'];
 	$_SESSION['USER_ACTIVE']=$Row['active'];

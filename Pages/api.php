@@ -47,7 +47,7 @@ echo '{data:'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 	$Param['password']==FormChars($Param['password']);
 
 
-	$qr=mysqli_fetch_assoc(mysqli_query($CONNECT, "SELECT * FROM `Users` WHERE login='$Param[login]' AND pasword='$Param[password]'"));
+	$qr=mysqli_fetch_assoc(mysqli_query($CONNECT, "SELECT `name`,`surname`,`Email`,`cellphone`,`login`,`pasword`,`active` FROM `Users` WHERE login='$Param[login]' AND pasword='$Param[password]'"));
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa format de logare.');
 
