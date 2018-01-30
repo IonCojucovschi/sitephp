@@ -36,7 +36,7 @@ $qr=mysqli_fetch_assoc(mysqli_query($CONNECT, "SELECT $SQL FROM `Users` WHERE lo
 
 if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa login');
 echo var_dump($qr);
-echo '{data:'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
+echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 }elseif($Module=='login'){
   ///  echo var_dump($Param);////verify params 
@@ -51,7 +51,7 @@ echo '{data:'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa format de logare.');
 
-	echo '{data:'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
+	echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 
 
@@ -64,7 +64,7 @@ echo '{data:'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa categorie.');
      ///echo var_dump($qr);
-     $alldata='{data:';
+     $alldata='{"data":';
 
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
