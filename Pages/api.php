@@ -56,7 +56,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 
 
-
+////    api/books/category/Dragoste
 }elseif($Module=='books' and $Param['category']){
 ///echo var_dump($Param);
 
@@ -64,13 +64,16 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa categorie.');
      ///echo var_dump($qr);
-     $alldata='{"data":';
-
+     $alldata='{"data":[';
+      $i=0;
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
-     	$alldata.=json_encode($bo,JSON_UNESCAPED_UNICODE);
+        if($i>0)$alldata.=',';
+
+        $i++;
+     	$alldata.=json_encode($bo);
      }
-	 $alldata.='}';
+	 $alldata.=']}';
 
 	echo $alldata;
 
