@@ -67,7 +67,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa categorie.');
      ///echo var_dump($qr);
-     $alldata='{"data":[';
+     $alldata='{"booklist":[';
       $i=0;
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
@@ -87,7 +87,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
     //echo var_dump($qr);
      
 
-  echo '{"data":'.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).'}';
+  echo '{"book":'.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).'}';
 
 
 }elseif($Module=="allcategory"){
@@ -96,7 +96,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage categoriile.');
      ///echo var_dump($qr);
-     $alldata='{"data":[';
+     $alldata='{"categorybook":[';
       $i=0;
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
