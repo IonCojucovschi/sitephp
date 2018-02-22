@@ -92,7 +92,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 }elseif($Module=="allcategory"){
 
-	  $qr=mysqli_query($CONNECT, "SELECT DISTINCT `category`, count(`id`) as quantity FROM `books`");
+	  $qr=mysqli_query($CONNECT, "SELECT DISTINCT `category` , count(`id`) as quantity  FROM `books` GROUP BY `category`");
 
 	if(!$qr)Error(4,'Nu sa putut extrage categoriile.');
      ///echo var_dump($qr);
