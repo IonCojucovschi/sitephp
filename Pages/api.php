@@ -77,9 +77,36 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	echo $alldata;
 
+}elseif($Module=="books" and $Param["id"]){
+
+ $qr=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[id]'");
+   if(!$qr)Error(4,'Nu sa putut extrage asa carte.');
+    //echo var_dump($qr);
+     
+
+  echo '{"data":'.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).'}';
 
 
-	
+}elseif($Module=="allcategory"){
+
+	  $qr=mysqli_query($CONNECT, "SELECT DISTINCT `category`, count(`id`) as quantity FROM `books`");
+
+	if(!$qr)Error(4,'Nu sa putut extrage categoriile.');
+     ///echo var_dump($qr);
+     $alldata='{"data":[';
+      $i=0;
+     while($bo = mysqli_fetch_assoc($qr)) {
+       // echo var_dump($bo);
+        if($i>0)$alldata.=',';
+
+        $i++;
+     	$alldata.=json_encode($bo);
+     }
+	 $alldata.=']}';
+
+	echo $alldata;
+
+
 }else{
 Error(0,"metoda nu este afisata!");
 }
