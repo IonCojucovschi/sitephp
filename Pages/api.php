@@ -38,6 +38,9 @@ if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa login');
 echo var_dump($qr);
 echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
+
+
+/////   api/login/login/admin/password/admin
 }elseif($Module=='login'){
   ///  echo var_dump($Param);////verify params 
 	if(!$Param['login']) Error(1,'loginul utilizatorului este null');
