@@ -1,7 +1,7 @@
 <?php
 
 function Error($p1,$p2){
-exit( '{"error":"'.$p1.'"," "text":"'.$p2.'"}');
+exit( '{"data":"'.$p1.'"," "text":"'.$p2.'"}');
 
 }
 
@@ -67,7 +67,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa categorie.');
      ///echo var_dump($qr);
-     $alldata='{"booklist":[';
+     $alldata='{"data":[';
       $i=0;
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
@@ -80,6 +80,8 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	echo $alldata;
 
+
+///api/books/id/7
 }elseif($Module=="books" and $Param["id"]){
 
  $qr=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[id]'");
@@ -87,16 +89,17 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
     //echo var_dump($qr);
      
 
-  echo '{"book":'.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).'}';
+  echo '{"data":'.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).'}';
 
-
+       
+      //// api/allcategory
 }elseif($Module=="allcategory"){
 
 	  $qr=mysqli_query($CONNECT, "SELECT DISTINCT `category` , count(`id`) as quantity  FROM `books` GROUP BY `category`");
 
 	if(!$qr)Error(4,'Nu sa putut extrage categoriile.');
      ///echo var_dump($qr);
-     $alldata='{"categorybook":[';
+     $alldata='{"data":[';
       $i=0;
      while($bo = mysqli_fetch_assoc($qr)) {
        // echo var_dump($bo);
