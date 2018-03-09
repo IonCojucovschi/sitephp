@@ -46,9 +46,8 @@ Head('Adaoga carti');
             </select><br>
             <label class="registercomponent">Data publicarii<em>*</em></label>
             <input class="registercomponent"  id="date" name="date" placeholder="date" type="date" autofocus required><br>
-            <input class="registercomponent"  id="description" name="description" placeholder="Descrieti pe scurt continutul cartii" autofocus required  type="text"><br>
-            <input class="registercomponent"  id="surname" name="author" placeholder="Autorul Cartii" autofocus required><br>
-            <input class="registercomponent"  id="surname" name="author" placeholder="Autorul Cartii" autofocus required><br>
+            <textarea class="registercomponent"  rows="10" cols="70" id="description" name="description" placeholder="Descrieti pe scurt continutul cartii" autofocus required  type="text"></textarea><br>
+
            
 
        </fieldset>
