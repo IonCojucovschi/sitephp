@@ -27,7 +27,8 @@ $_POST['bookcontent']==FormChars($_POST['bookcontent']);
 $image="Resources/images/".$_POST['category']."/".$_FILES['image']['name'];
 $book="Resources/books/".$_POST['category']."/".$_FILES['bookcontent']['name'];
 
-
+echo $image.'<>>>>>><>>>>>>';
+echo $book;
 /// query to add a boo on db
 
 mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','','','$book','$image')");
@@ -43,9 +44,11 @@ if (move_uploaded_file($_FILES['bookcontent']['tmp_name'], $book)) {
   		$msg = "Failed to upload book content!!";
   	}  	
 
-echo var_dump($_POST);
+// echo var_dump($_POST);
 
-}
+
+
+ }
 
 
 ?>
