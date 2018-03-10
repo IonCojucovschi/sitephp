@@ -161,14 +161,14 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 	echo '
 	<li style=" margin:10px; float: left;">
 	<div class="book_wrapper"
-       style="background-image:url("'.$image_link.'");">
+       style="background-image:url('.$image_link.');">
 	<div class="book_name">'.$book_name.'</div>
    	<button type="submit" class="details">
    	<a href="'.$detail_link.'">Detail</a>
    	</button>
-   		<button type="submit" class="downloads" style="">
+   	<button class="details" type="submit">	
    	<a href="'.$download_link.'">Download</a>
-   	</button>
+   	</burron>
 	</div></li>';
 }
 
