@@ -57,7 +57,7 @@ Head('Pagina principala');
                     	if($contor>10) break;
                     	if($_SESSION['USER_LOGIN_IN'])
                     	{
-                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
+                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),"../../../".$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
                         }else
                         {
                         	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),'../../../login','/viewbook/viewbook/detail/'.$row['id']);
