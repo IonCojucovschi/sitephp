@@ -33,7 +33,7 @@ Head('Pagina principala');
 			<main class="content">
 				<div style="margin: 30 auto;">
 					<br>
-				    <?php echo '<div class="book_wrapper" style="margin-left: 20px; float: left; background-image:url('.$qr['image_linq'].');"></div>'; ?>
+				    <?php echo '<div class="book_wrapper" style="margin-left: 20px; float: left; background-image:url(../../../'.$qr['image_linq'].');"></div>'; ?>
                     <div style="float: left; margin-left: 20px; padding-top: 30px;">
                          <b>Titlu: </b><?php  echo " ".$qr['title']  ?><br><br>
                          <b>Autorul: </b><?php  echo " ".$qr['author']  ?><br><br>
@@ -46,7 +46,8 @@ Head('Pagina principala');
 					
 
 				</div>
-			    <div style="display: block; block;">
+			    <div style="display: block; margin-top: 270px;">
+			    	<br>
                  	<b>Descriere:</b>   <?php echo " ".$qr['description']; ?>
                 </div>			 
 				
