@@ -51,6 +51,7 @@ else if($Page=='book') include('Form/book.php');
 else if($Page=='profile') include('Pages/profile.php');
 else if($Page=='api') include('Pages/api.php');
 else if($Page=='restore') include('Pages/restore.php');
+else if($Page=='viewbook') include('Pages/viewbook.php');
 
 
 
@@ -163,7 +164,7 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 	<div class="book_wrapper"
        style="background-image:url('.$image_link.');">
 	<div class="book_name">'.$book_name.'</div>
-   	<button type="submit" class="details">
+   	<button type="submit" class="details" name ="enter">
    	<a href="'.$detail_link.'">Detail</a>
    	</button>
    	<button class="details" type="submit">	

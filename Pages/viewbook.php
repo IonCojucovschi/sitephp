@@ -1,7 +1,7 @@
 <?php
 Head('Pagina principala');
 ?>
-
+<link href="../../../Resources/style.css" rel="stylesheet">
 <body>
 
 <div class="wrapper_all">
@@ -11,28 +11,17 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();   ?>
+    <?php Menu();   MessageShow();?>
 	<!-- .header-->
 
 	<div class="middle">
 
 		<div class="container">
 			<main class="content">
-				<ul style="list-style-type: none;">
-                     <?php  
-				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`");
-                    while ($row=mysqli_fetch_array($books)) {
-                    	if($_SESSION['USER_LOGIN_IN'])
-                    	{
-                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
-                        }else
-                        {
-                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),"Logativa",'/viewbook/viewbook/detail/'.$row['id']);
-                        }
-                    }
+				<?php  
+                  echo var_dump($_SESSION['DETAILBOOK_ID']);   /// TO DO    must implement Book detail View 
 				  ?>
 
-				</ul>
 				
 			</main><!-- .content -->
 		</div><!-- .container-->

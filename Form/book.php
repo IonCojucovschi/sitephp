@@ -31,7 +31,7 @@ echo $image.'<>>>>>><>>>>>>';
 echo $book;
 /// query to add a boo on db
 
-mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','','','$book','$image')");
+mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','$_SESSION[USER_ID]','','$book','$image')");
 
 if (move_uploaded_file($_FILES['image']['tmp_name'], $image)) {
   		$msg = "Image uploaded successfully";
@@ -48,6 +48,13 @@ if (move_uploaded_file($_FILES['bookcontent']['tmp_name'], $book)) {
 
 
 
+ }
+ elseif($Module=='viewbook' and  $_POST['enter'])
+ {
+    if(!$Param['detail']) MesageSend(1,' Codul captcha este scris gresit!');
+    $Param['detail']==FormChars($Param['detail']);
+        
+    $_SESSION['DETAILBOOK_ID']=$Param['detail'];
  }
 
 
