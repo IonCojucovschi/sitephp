@@ -21,7 +21,6 @@ Head('Pagina principala');
         $qr=mysqli_fetch_assoc($bookQuery);
          if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
 
-         echo var_dump($qr);  
      }
 
     Menu();   MessageShow();?>
@@ -61,7 +60,7 @@ Head('Pagina principala');
                     		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
                         }else
                         {
-                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id']);
+                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),'../../../login','/viewbook/viewbook/detail/'.$row['id']);
                         }
                     }
 				  ?>
