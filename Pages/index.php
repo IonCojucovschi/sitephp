@@ -11,7 +11,7 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();   ?>
+    <?php Menu();  MessageShow(); ?>
 	<!-- .header-->
 
 	<div class="middle">
@@ -27,7 +27,7 @@ Head('Pagina principala');
                     		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
                         }else
                         {
-                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),"Logativa",'/viewbook/viewbook/detail/'.$row['id']);
+                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id']);
                         }
                     }
 				  ?>

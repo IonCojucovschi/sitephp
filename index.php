@@ -165,7 +165,7 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
        style="background-image:url('.$image_link.');">
 	<div class="book_name">'.$book_name.'</div>
    	<button type="submit" class="details" name ="enter">
-   	<a href="'.$detail_link.'">Detail</a>
+   	<a href="'.$detail_link.'" action="/viewbook/viewbook">Detail</a>
    	</button>
    	<button class="details" type="submit">	
    	<a href="'.$download_link.'">Download</a>

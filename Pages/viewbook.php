@@ -11,19 +11,48 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();   MessageShow();?>
+    <?php 
+    
+     if($Module=='viewbook')
+     {
+	    $Param['detail']==FormChars($Param['detail']);
+	    $_SESSION['DETAILBOOK_ID']=$Param['detail'];
+        $bookQuery=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[detail]'");
+        $qr=mysqli_fetch_assoc($bookQuery);
+         if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
+
+         echo var_dump($qr);  
+     }
+
+    Menu();   MessageShow();?>
 	<!-- .header-->
 
 	<div class="middle">
 
 		<div class="container">
 			<main class="content">
-				<?php  
-                  echo var_dump($_SESSION['DETAILBOOK_ID']);   /// TO DO    must implement Book detail View 
-				  ?>
+				<div style="margin: 30 auto;">
+					<br>
+				    <?php echo '<div class="book_wrapper" style="margin-left: 20px; float: left; background-image:url('.$qr['image_linq'].');"></div>'; ?>
+                    <div style="float: left; margin-left: 20px; padding-top: 30px;">
+                         <b>Titlu: </b><?php  echo " ".$qr['title']  ?><br><br>
+                         <b>Autorul: </b><?php  echo " ".$qr['author']  ?><br><br>
+                         <b>Data Publicarii: </b><?php  echo " ".$qr['date']  ?><br><br>
+                         <b>Categoria: </b><?php  echo " ".$qr['category']  ?><br><br>
+                         <b>Rating:</b><?php  echo " ".$qr['rating']  ?><br><br>
+                         <b>Descarcari:</b><?php  echo " ".$qr['downloands_number']  ?><br><br>
+                         
+                    </div>
+					
 
+				</div>
+			    <div style="display: block; block;">
+                 	<b>Descriere:</b>   <?php echo " ".$qr['description']; ?>
+                </div>			 
+				
 				
 			</main><!-- .content -->
+
 		</div><!-- .container-->
 
 		

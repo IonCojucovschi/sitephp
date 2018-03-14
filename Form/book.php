@@ -49,12 +49,13 @@ if (move_uploaded_file($_FILES['bookcontent']['tmp_name'], $book)) {
 
 
  }
- elseif($Module=='viewbook' and  $_POST['enter'])
+ elseif($Module=='viewbook')
  {
-    if(!$Param['detail']) MesageSend(1,' Codul captcha este scris gresit!');
     $Param['detail']==FormChars($Param['detail']);
-        
     $_SESSION['DETAILBOOK_ID']=$Param['detail'];
+
+    if(!$Param['detail']) MesageSend(1,' Codul captcha este scris gresit!','/index');
+        
  }
 
 
