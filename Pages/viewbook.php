@@ -21,6 +21,18 @@ Head('Pagina principala');
         $qr=mysqli_fetch_assoc($bookQuery);
          if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
 
+
+         if ($Module=='viewbook' and $Param['WantRead']) {
+             MesageSend(3,'Este adaugata la dvs in <b>Cos</b>','index');
+            echo "a trecut pe aici";
+           }
+
+
+
+
+
+
+
      }
 
     Menu();   MessageShow();?>
@@ -42,10 +54,10 @@ Head('Pagina principala');
                          <b>Descarcari:</b><?php  echo " ".$qr['downloands_number']  ?><br><br>
                          
                     </div>
-					
+					<a type="submit" class="details" href='/viewbook/viewbook/WantRead'>Adauga in Cos</a>
 
 				</div>
-			    <div style="display: block; margin-top: 270px;">
+			    <div style="display: block; margin-top: 270px; margin-left: 20px;">
 			    	<br>
                  	<b>Descriere:</b>   <?php echo " ".$qr['description']; ?>
                 </div>			 
