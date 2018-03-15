@@ -54,7 +54,7 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 
 	if(!$qr)Error(4,'Nu sa putut extrage datele pentu asa format de logare.');
 
-	echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
+	echo '{"data":{"profile":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}}';
 
 
 
