@@ -39,7 +39,7 @@ Head('Inregistrare');
         <fieldset id="personalData">
             <legend>Informatia Personala</legend>
            <label class="registercomponent" for="login">Login<em>*</em></label>
-            <input class="registercomponent" id="login" name ="login"  autofocus required maxlength="10" pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
+            <input class="registercomponent" id="login" name ="login"  autofocus required maxlength="15" pattern="[A-Za-z-0-9]{3,15}" title="Trebuie sa fie cuprins intre 3 si 15 simboluri"><br>
             <label class="registercomponent" for="pass">Parola<em>*</em></label>
             <input class="registercomponent" id="pass" type="password" name="pasword" autofocus required><br>
             <input class="registercomponent" placeholder="Introdu textul alaturat"  id="captcha" type="text" name="captcha" autofocus required>
