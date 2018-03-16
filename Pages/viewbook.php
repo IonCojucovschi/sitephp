@@ -12,6 +12,7 @@ Head('Pagina principala');
 <div class="wrapper" >
 
     <?php 
+     MessageShow();
     
      if($Module=='viewbook')
      {
@@ -24,12 +25,21 @@ Head('Pagina principala');
 
          if ($Module=='viewbook' and $Param['WantRead']) {
 
-             $Param['detail']==FormChars($Param['WantRead']);
+             $Param['WantRead']==FormChars($Param['WantRead']);
              $_SESSION['DETAILBOOK_ID']=$Param['WantRead'];
               $bookQuery=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[WantRead]'");
              $qr=mysqli_fetch_assoc($bookQuery);
              if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
               ////there must put code for save book into garbadge  
+             $ifBookExist=mysqli_query($CONNECT,"SELECT * from `wishread` where user_id='$_SESSION[USER_ID]' and book_id=$_SESSION[DETAILBOOK_ID]");
+             if(mysqli_fetch_assoc($ifBookExist))
+                {
+                        ////cartea deja exista in lista 
+                }else
+                {
+                    $addedCombination=mysqli_query($CONNECT, "INSERT INTO `wishread` VALUES ('','$_SESSION[USER_ID]','$_SESSION[DETAILBOOK_ID]')");
+                }
+             
            }
 
 
@@ -40,7 +50,7 @@ Head('Pagina principala');
 
      }
 
-    Menu();   MessageShow();?>
+    Menu(); ?>
 	<!-- .header-->
 
 	<div class="middle">

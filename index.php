@@ -52,6 +52,7 @@ else if($Page=='profile') include('Pages/profile.php');
 else if($Page=='api') include('Pages/api.php');
 else if($Page=='restore') include('Pages/restore.php');
 else if($Page=='viewbook') include('Pages/viewbook.php');
+else if($Page=='userbox') include('Pages/userbox.php');
 
 
 
@@ -122,6 +123,7 @@ function Menu(){
           <a  href="/restore" class="menu">Restabilire Parola</a>	';
     else $Menu='<a  href="/addbook" class="menu">Adaoga Carti</a>
       	<a  href="/profile" class="menu">Profil</a>
+         <a  href="/userbox" class="menu">Vreau sa Citesc</a>
       	<a  href="/account/logout" class="menu , logout">Iesi</a>';
 
       	
