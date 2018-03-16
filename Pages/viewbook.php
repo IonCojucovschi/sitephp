@@ -32,7 +32,7 @@ Head('Pagina principala');
              if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
               ////there must put code for save book into garbadge  
              $ifBookExist=mysqli_query($CONNECT,"SELECT * from `wishread` where user_id='$_SESSION[USER_ID]' and book_id=$_SESSION[DETAILBOOK_ID]");
-             if(mysqli_fetch_assoc($ifBookExist))
+             if($ifBookExist)
                 {
                         ////cartea deja exista in lista 
                 }else

@@ -20,11 +20,10 @@ Head('Pagina principala');
 			<main class="content">
 				<ul style="list-style-type: none;">
                      <?php 
-                     $selectedBooks=mysqli_fetch_assoc(mysqli_query($CONNECT,"SELECT `book_id` FROM `wishread` where user_id='$_SESSION[USER_ID]'")); 
-                     echo var_dump($selectedBooks);
-                      foreach ($selectedBooks as $idBook) {
-                      	
-		                     $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` where `id`='$idBook[book_id]'");
+                    
+                     	$books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` where `id` in (SELECT `book_id` FROM `wishread` where user_id='$_SESSION[USER_ID]')");
+
+                    
 		                    while ($row=mysqli_fetch_array($books)) {
 		                    	if($_SESSION['USER_LOGIN_IN'])
 		                    	{
@@ -34,9 +33,7 @@ Head('Pagina principala');
 		                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id']);
 		                        }
 		                    }
-                      
-                      }
-				      
+                				      
 				  ?>
 
 				</ul>
