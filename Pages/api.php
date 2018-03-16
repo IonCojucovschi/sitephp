@@ -113,8 +113,61 @@ echo '{"data":'.json_encode($qr,JSON_UNESCAPED_UNICODE).'}';
 	echo $alldata;
 
 
-}else{
-Error(0,"metoda nu este afisata!");
+
+
+
+
+
+
+}elseif($Module="wishread" and $Param['id']){
+
+$Param['id']==FormChars($Param['id']);
+
+  $books=mysqli_query($CONNECT,"SELECT * FROM `books` where `id` in (SELECT `book_id` FROM `wishread` where user_id='$Param[id]')");
+  
+  if(!$books)Error(4,'Nu sa putut extrage cartile din dorinte.');    
+
+  $alldata='{"data":[';
+      $i=0;
+     while($bo = mysqli_fetch_assoc($books)) {
+       // echo var_dump($bo);
+        if($i>0)$alldata.=',';
+
+        $i++;
+      $alldata.=json_encode($bo);
+     }
+   $alldata.=']}';
+
+  echo $alldata;
+
+
+
+}elseif ($Module=="iaddthis" and $Param['id']) {
+  
+   $Param['id']==FormChars($Param['id']);
+
+   $books=mysqli_query($CONNECT,"SELECT * FROM `books` where user_id='$Param[id]'");
+  
+   if(!$books)Error(4,'Nu sa putut extrage cartile din dorinte.');    
+
+   $alldata='{"data":[';
+      $i=0;
+     while($bo = mysqli_fetch_assoc($books)) {
+       // echo var_dump($bo);
+        if($i>0)$alldata.=',';
+
+        $i++;
+      $alldata.=json_encode($bo);
+     }
+    $alldata.=']}';
+
+   echo $alldata;
+    
+
+
+}else
+{
+    Error(0,"metoda nu este afisata!");
 }
 
 
