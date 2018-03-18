@@ -4,4 +4,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond $1 !^(index\.php|robots\.txt)
 
+php_value upload_max_filesize 40M
+
 RewriteRule ^(.*)$ index.php?/$1 [L]

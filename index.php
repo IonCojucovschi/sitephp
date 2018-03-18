@@ -209,7 +209,22 @@ return $Explode[0].'@'.'xxxxxx';
 }
 
 
+function ShowAllCategories()
+{
+   // $qrii=mysqli_query($CONNECT, "SELECT category  FROM `books`");
+    $qrii=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`");
+    $showCategory='<ul>';
+    if($qrii)
+     {
+     	while($bo = mysqli_fetch_assoc($qr)) {
+         $showCategory.='<li>'.$bo['category']."    ".$bo['quantity'].'</li>';
+        }
+     }
+    $showCategory.='</ul>';
 
+echo $showCategory;
+
+}
 
 
 
