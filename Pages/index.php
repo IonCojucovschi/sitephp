@@ -9,19 +9,23 @@ Head('Pagina principala');
 		<?php 
          //// show alll categories   
 
-    $qrii=mysqli_query($CONNECT, "SELECT DISTINCT `category` , count(`id`) as quantity  FROM `books` GROUP BY `category`");
+		 $qrii=mysqli_query($CONNECT, "SELECT DISTINCT `category` , count(`id`) as quantity  FROM `books` GROUP BY `category`");
 
-	$showCategory='<ul>';
-    if($qrii)
-     {
-     	while($bo = mysqli_fetch_assoc($qrii)) {
-         $showCategory.='<li>'.$bo['category']."    ".$bo['quantity'].'</li>';
-        }
-     }
-    $showCategory.='</ul>';
+		$showCategory='<ul style="list-style: none;">';
+	    if($qrii)
+	     {
+	     	while($bo = mysqli_fetch_assoc($qrii)) {
+	         $showCategory.='<li class="menuCategory" 
+             ><a>'.$bo['category']."    ".$bo['quantity'].'</a></li>';
+	        }
+	     }
+	    $showCategory.='</ul>';
 
-    echo $showCategory;
-		///ShowAllCategories(); 
+	    echo $showCategory;
+
+
+
+		//ShowAllCategories(); 
 		?>
 		
 		</aside><!-- .left-sidebar -->
