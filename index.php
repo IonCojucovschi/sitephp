@@ -211,18 +211,20 @@ return $Explode[0].'@'.'xxxxxx';
 
 function ShowAllCategories()
 {
-   // $qrii=mysqli_query($CONNECT, "SELECT category  FROM `books`");
-    $qrii=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`");
-    $showCategory='<ul>';
-    if($qrii)
-     {
-     	while($bo = mysqli_fetch_assoc($qr)) {
-         $showCategory.='<li>'.$bo['category']."    ".$bo['quantity'].'</li>';
-        }
-     }
-    $showCategory.='</ul>';
+	global $CONNECT;
+    $qrii=mysqli_query($CONNECT, "SELECT DISTINCT `category` , count(`id`) as quantity  FROM `books` GROUP BY `category`");
 
-echo $showCategory;
+		$showCategory='<ul style="list-style: none;">';
+	    if($qrii)
+	     {
+	     	while($bo = mysqli_fetch_assoc($qrii)) {
+	         $showCategory.='<li class="menuCategory" 
+             ><a>'.$bo['category']."    ".$bo['quantity'].'</a></li>';
+	        }
+	     }
+	    $showCategory.='</ul>';
+
+	    echo $showCategory;
 
 }
 
