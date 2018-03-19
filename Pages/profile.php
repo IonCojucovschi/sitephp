@@ -8,7 +8,7 @@ Head('Pagina principala');
 
 <aside class="left-sidebar">
 			
-
+    <?php ShowAllCategories();   ?>
 
 
 

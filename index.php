@@ -53,7 +53,7 @@ else if($Page=='api') include('Pages/api.php');
 else if($Page=='restore') include('Pages/restore.php');
 else if($Page=='viewbook') include('Pages/viewbook.php');
 else if($Page=='userbox') include('Pages/userbox.php');
-
+else if($Page=='bookscategory') include('Pages/booksCategory.php');
 
 
 function ULogin($p1){
@@ -219,7 +219,7 @@ function ShowAllCategories()
 	     {
 	     	while($bo = mysqli_fetch_assoc($qrii)) {
 	         $showCategory.='<li class="menuCategory" 
-             ><a>'.$bo['category']."    ".$bo['quantity'].'</a></li>';
+             ><a href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    ".$bo['quantity'].'</a></li>';
 	        }
 	     }
 	    $showCategory.='</ul>';

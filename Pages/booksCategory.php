@@ -1,6 +1,7 @@
 <?php
 Head('Pagina principala');
 ?>
+<link href="../../../Resources/style.css" rel="stylesheet">
 
 <body>
 
@@ -15,7 +16,14 @@ Head('Pagina principala');
 
 <div class="wrapper" >
 
-    <?php Menu();  MessageShow(); ?>
+    <?php 
+      if($Module=='category')
+     {
+       $Param['name']==FormChars($Param['name']);
+	    $_SESSION['CATEGORY_BOOK']=$Param['name'];
+
+	 }
+    Menu();  MessageShow(); ?>
 	<!-- .header-->
 
 	<div class="middle">
@@ -24,7 +32,7 @@ Head('Pagina principala');
 			<main class="content">
 				<ul style="list-style-type: none;">
                      <?php  
-				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`");
+				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` Where category='$_SESSION[CATEGORY_BOOK]'");
                     while ($row=mysqli_fetch_array($books)) {
                     	if($_SESSION['USER_LOGIN_IN'])
                     	{
