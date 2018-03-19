@@ -34,12 +34,13 @@ Head('Pagina principala');
                      <?php  
 				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` Where category='$_SESSION[CATEGORY_BOOK]'");
                     while ($row=mysqli_fetch_array($books)) {
-                    	if($_SESSION['USER_LOGIN_IN'])
+                    
+                        if($_SESSION['USER_LOGIN_IN'])
                     	{
-                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
+                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),"../../../".$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
                         }else
                         {
-                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id']);
+                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR","../../../".$row['image_linq']),'../../../login','/viewbook/viewbook/detail/'.$row['id']);
                         }
                     }
 				  ?>
