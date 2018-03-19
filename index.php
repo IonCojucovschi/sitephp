@@ -219,7 +219,7 @@ function ShowAllCategories()
 	     {
 	     	while($bo = mysqli_fetch_assoc($qrii)) {
 	         $showCategory.='<li class="menuCategory" 
-             ><a href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    ".$bo['quantity'].'</a></li>';
+             ><a style="color=#ffffff;" href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    (".$bo['quantity'].')</a></li>';
 	        }
 	     }
 	    $showCategory.='</ul>';

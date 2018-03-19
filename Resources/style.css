@@ -127,9 +127,10 @@ background:#f44842;
 
 .menuCategory{
 	background: #6c9ae2;
+	color: #fff;
 	height: 20px;
 	padding: 4px;
-
+    font-size: 15px;
 }
      
 .menuCategory:hover{
@@ -138,7 +139,9 @@ cursor:pointer;
 opacity: 0.5;
 
 }
-
+.menuCategory a:link{
+    color: #ffffff;
+}
 
 /*THERE IS DESIGN FOR BOOK ITEM
 -----------------------------------------------------------------------------*/
