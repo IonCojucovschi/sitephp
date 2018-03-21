@@ -23,7 +23,7 @@ Head('Pagina principala');
                     
                      	$books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` where `id` in (SELECT `book_id` FROM `wishread` where user_id='$_SESSION[USER_ID]')");
 
-                    
+                                        
 		                    while ($row=mysqli_fetch_array($books)) {
 		                    	if($_SESSION['USER_LOGIN_IN'])
 		                    	{

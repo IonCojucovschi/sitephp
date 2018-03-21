@@ -12,31 +12,37 @@ Head('Pagina principala');
 <div class="wrapper" >
 
     <?php 
-     MessageShow();
     
      if($Module=='viewbook')
      {
 	    $Param['detail']==FormChars($Param['detail']);
 	    $_SESSION['DETAILBOOK_ID']=$Param['detail'];
         $bookQuery=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[detail]'");
+
+        $updateViews=mysqli_query($CONNECT, "UPDATE `books` SET rating=rating+1 WHERE id='$Param[detail]'");
+
+
         $qr=mysqli_fetch_assoc($bookQuery);
          if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
 
 
          if ($Module=='viewbook' and $Param['WantRead']) {
 
+                         
              $Param['WantRead']==FormChars($Param['WantRead']);
              $_SESSION['DETAILBOOK_ID']=$Param['WantRead'];
               $bookQuery=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[WantRead]'");
              $qr=mysqli_fetch_assoc($bookQuery);
              if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
               ////there must put code for save book into garbadge  
+
              $ifBookExist=mysqli_query($CONNECT,"SELECT * from `wishread` where user_id='$_SESSION[USER_ID]' and book_id=$_SESSION[DETAILBOOK_ID]");
-             if(mysqli_fetch_assoc($ifBookExist))
+             if(!$ifBookExist)
                 {
-                        ////cartea deja exista in lista 
+                    ////cartea deja exista in lista 
                 }else
                 {
+                    $updateDownloads=mysqli_query($CONNECT, "UPDATE `books` SET downloands_number =downloands_number +1 WHERE id='$Param[WantRead]'");
                     $addedCombination=mysqli_query($CONNECT, "INSERT INTO `wishread` VALUES ('','$_SESSION[USER_ID]','$_SESSION[DETAILBOOK_ID]')");
                 }
              
@@ -49,7 +55,7 @@ Head('Pagina principala');
 
 
      }
-
+     MessageShow();
     Menu(); ?>
 	<!-- .header-->
 

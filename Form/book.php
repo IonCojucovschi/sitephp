@@ -20,9 +20,9 @@ $_POST['bookcontent']==FormChars($_POST['bookcontent']);
 // };
 
 /////// foor captcha code
-//  if(strcmp($_SESSION['captcha'],md5($_POST['captcha']))!=0){
-//  	MesageSend(1,'codul captcha este scris gresit!');
-// }
+ if(strcmp($_SESSION['captcha'],md5($_POST['captcha']))!=0){
+ 	MesageSend(1,'codul captcha este scris gresit!');
+}
 
 $image="Resources/images/".$_POST['category']."/".$_FILES['image']['name'];
 $book="Resources/books/".$_POST['category']."/".$_FILES['bookcontent']['name'];
@@ -35,6 +35,10 @@ $imagename = $_FILES['image']['name'];
 $bookName=$_FILES['bookcontent']['name'];
 $imgext = pathinfo($imagename, PATHINFO_EXTENSION);
 $pdfext = pathinfo($bookName, PATHINFO_EXTENSION);
+
+$ifBookExist=mysqli_query($CONNECT,"SELECT * FROM `books` where `title`='$_POST[title]'");
+if($ifBookExist) MesageSend(2,' Asa carte cu titlu dat exista!','/addbook');
+
 
 if(!in_array($imgext,$allowed) ) {
     MesageSend(1,'Nu ati ales o imagine valida!','/addbook');
