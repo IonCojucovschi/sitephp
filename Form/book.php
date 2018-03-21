@@ -27,8 +27,22 @@ $_POST['bookcontent']==FormChars($_POST['bookcontent']);
 $image="Resources/images/".$_POST['category']."/".$_FILES['image']['name'];
 $book="Resources/books/".$_POST['category']."/".$_FILES['bookcontent']['name'];
 
-echo $image.'<>>>>>><>>>>>>';
-echo $book;
+
+///// verify extension type of image and book
+$allowed =  array('gif','png' ,'jpg');
+$extenPDF= array('pdf');
+$imagename = $_FILES['image']['name'];
+$bookName=$_FILES['bookcontent']['name'];
+$imgext = pathinfo($imagename, PATHINFO_EXTENSION);
+$pdfext = pathinfo($bookName, PATHINFO_EXTENSION);
+
+if(!in_array($imgext,$allowed) ) {
+    MesageSend(1,'Nu ati ales o imagine valida!','/addbook');
+}
+if(!in_array($pdfext,$extenPDF) ) {
+    MesageSend(1,' Cartea trebuie sa aiba format PDF!','/addbook');
+}
+
 /// query to add a boo on db
 
 mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','$_SESSION[USER_ID]','','$book','$image')");
@@ -43,7 +57,7 @@ if (move_uploaded_file($_FILES['bookcontent']['tmp_name'], $book)) {
   	}else{
   		$msg = "Failed to upload book content!!";
   	}  	
-
+ MesageSend(2,' Sa Adaogat cu succes! Mai incercati =).','/addbook');
 // echo var_dump($_POST);
 
 
