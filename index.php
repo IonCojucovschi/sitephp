@@ -160,12 +160,12 @@ function Content($p1){
 }
 
 function BookFoorm($book_name,$image_link,$download_link,$detail_link){
-
+////book name is not showed '.$book_name.'
 	echo '
 	<li style=" margin:10px; float: left;">
 	<div class="book_wrapper"
        style="background-image:url('.$image_link.');">
-	<div class="book_name">'.$book_name.'</div>
+	<div class="book_name"></div>
    	<button type="submit" class="details" name ="enter">
    	<a href="'.$detail_link.'" action="/viewbook/viewbook">Detail</a>
    	</button>
