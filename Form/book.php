@@ -49,6 +49,11 @@ if(!in_array($pdfext,$extenPDF) ) {
     MesageSend(1,' Cartea trebuie sa aiba format PDF!','/addbook');
 }
 
+////verify book size
+if($_FILES['bookcontent']['size'] > 67108864) MesageSend(2,' Cartea depaseste de limita 64MB. Cautati o versiune mai redusa.','/addbook');
+
+
+
 /// query to add a boo on db
 
 mysqli_query($CONNECT, "INSERT INTO `books` VALUES ( '','$_POST[title]','$_POST[author]', '$_POST[category]','$_POST[date]', '$_POST[date]', '$_POST[description]','','$_SESSION[USER_ID]','','$book','$image')");
