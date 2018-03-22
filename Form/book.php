@@ -29,18 +29,25 @@ $book="Resources/books/".$_POST['category']."/".$_FILES['bookcontent']['name'];
 
 
 ///// verify extension type of image and book
-$allowed =  array('gif','png' ,'jpg');
+$allowed =  array('gif','png' ,'jpg','jpeg');
 $extenPDF= array('pdf');
 $imagename = $_FILES['image']['name'];
 $bookName=$_FILES['bookcontent']['name'];
 $imgext = pathinfo($imagename, PATHINFO_EXTENSION);
 $pdfext = pathinfo($bookName, PATHINFO_EXTENSION);
 
-global $CONNECT;
-$ifBookExist=mysqli_query($CONNECT,"SELECT * FROM `books` where (title ='$_POST[title]')");
 
-if($ifBookExist!=null) MesageSend(2,' Asa carte cu titlu dat exista!','/addbook');
+///// verify if this book exist on data base
 
+$ifBookExist=mysqli_query($CONNECT,"SELECT `title` FROM `books` WHERE (`title`='$_POST[title]')");
+$tmpval1=mysqli_fetch_assoc($ifBookExist);
+if(!$tmpval1['title'])
+ {
+ 	///cartea nu exista 
+ }else{
+     ///cartea exista 
+ 	MesageSend(2,' Asa carte cu titlu dat exista!','/addbook');
+ }
 
 if(!in_array($imgext,$allowed) ) {
     MesageSend(1,'Nu ati ales o imagine valida!','/addbook');
