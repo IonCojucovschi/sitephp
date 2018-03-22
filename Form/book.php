@@ -36,8 +36,10 @@ $bookName=$_FILES['bookcontent']['name'];
 $imgext = pathinfo($imagename, PATHINFO_EXTENSION);
 $pdfext = pathinfo($bookName, PATHINFO_EXTENSION);
 
-$ifBookExist=mysqli_query($CONNECT,"SELECT * FROM `books` where `title`='$_POST[title]'");
-if($ifBookExist) MesageSend(2,' Asa carte cu titlu dat exista!','/addbook');
+global $CONNECT;
+$ifBookExist=mysqli_query($CONNECT,"SELECT * FROM `books` where (title ='$_POST[title]')");
+
+if($ifBookExist!=null) MesageSend(2,' Asa carte cu titlu dat exista!','/addbook');
 
 
 if(!in_array($imgext,$allowed) ) {
