@@ -5,8 +5,7 @@ Head('Pagina principala');
 
 <body>
 
-<div class="wrapper_all">
-<div class="left-sidebar">
+<div id="left-sidebar">
 		<?php 
    
 		ShowAllCategories(); 
@@ -14,7 +13,7 @@ Head('Pagina principala');
 		
 		</div><!-- .left-sidebar -->
 
-<div class="wrapper" >
+<div id="wrapper" >
 
     <?php 
       if($Module=='category')
@@ -53,12 +52,12 @@ Head('Pagina principala');
 		
 
 	</div><!-- .middle-->
-
+<div class="footer">
+    ReadAboock : every dey is mor beautifull with me!!!!
+</div>
 </div><!-- .wrapper -->
 
-<footer class="footer">
-	ReadAboock : every dey is mor beautifull with me!!!!
-</footer><!-- .footer -->
-</div>
+<script type="text/javascript" src="../../../Resources/jquery.js"></script>
+<script type="text/javascript" src="../../../Resources/script.js"></script>
 </body>
 </html>

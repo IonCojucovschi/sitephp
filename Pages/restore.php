@@ -5,8 +5,17 @@ Head('Restabilire parola');
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 
 <body>
-<div class="wrapper_all">
-<div class="wrapper" >
+<div id="left-sidebar">
+    <?php 
+   
+    ShowAllCategories(); 
+    ?>
+    
+    </div><!-- .left-sidebar -->
+
+
+
+<div id="wrapper" >
 
     <?php Menu();   ?>
 	<!-- .header-->
@@ -22,14 +31,12 @@ Head('Restabilire parola');
         <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Restabileste"></p>
      </form>'); ?>
  
-
- </div><!--wrapper-->	
-
-   
      
 <?php  Footer(); ?>
 <!-- adaogam footerul -->
 
-</div>
+ </div><!--wrapper-->	
+<script type="text/javascript" src="../Resources/jquery.js"></script>
+<script type="text/javascript" src="../Resources/script.js"></script>
 </body>
 </html>
