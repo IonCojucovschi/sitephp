@@ -47,7 +47,7 @@ mysqli_query($CONNECT, "INSERT INTO `doctori` VALUES ('', '$Exp[0]', '$Exp[1]','
     $Exp=explode('.', $Param['getbyid']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
     ///echo var_dump($Exp);
 
- $qr=mysqli_query($CONNECT, "SELECT * FROM `doctori` WHERE id='$Exp[0]'");
+ $qr=mysqli_query($CONNECT, "SELECT * FROM `doctori` WHERE login='$Exp[0]' and password='$Exp[1]'");
    if(!$qr)Error(4,'Nu sa putut extrage asa date.');
     //echo var_dump($qr);
  echo '{"data":['.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).']}';
@@ -87,7 +87,7 @@ elseif($Module=="user" and $Param['register']){
 
 	echo $alldata;
 
-////    /doctori/user/getbyid/20
+////    /doctori/user/getbyid/login.password
 }elseif($Module=='user' and $Param['getbyid']){
     if(!$Param['getbyid']) Error(1,'param all este null');
     // if(!$Param['param']) Error(2,'parametrii de identificcare este null');
@@ -95,7 +95,7 @@ elseif($Module=="user" and $Param['register']){
     $Exp=explode('.', $Param['getbyid']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
     /// echo var_dump($Exp);
 
- $qr=mysqli_query($CONNECT, "SELECT * FROM `Users` WHERE id='$Exp[0]'");
+ $qr=mysqli_query($CONNECT, "SELECT * FROM `Users` WHERE login='$Exp[0]' and pasword='$Exp[1]'");
    if(!$qr)Error(4,'Nu sa putut extrage asa date.');
     //echo var_dump($qr);
  echo '{"data":['.json_encode(mysqli_fetch_assoc($qr),JSON_UNESCAPED_UNICODE).']}';
@@ -236,5 +236,43 @@ elseif($Module=="user" and $Param['register']){
     $Exp=explode('.', $Param['update']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
    /// echo var_dump($Exp);
     mysqli_query($CONNECT, "UPDATE `days_availability` SET hours_list='$Exp[1]',work_hours='$Exp[2]' WHERE id='$Exp[0]'");
+
+/////    /doctori/procedure_doctor/register/proc_id.doc_id
+}elseif($Module=='procedure_doctor' and $Param['register']){
+
+ if(!$Param['register']) Error(1,'param all este null');
+    // if(!$Param['param']) Error(2,'parametrii de identificcare este null');
+    $Param['register']==FormChars($Param['register']);
+
+    $Exp=explode('.', $Param['register']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
+    /// echo var_dump($Exp);
+
+    mysqli_query($CONNECT, "INSERT INTO `procedure_doctor` VALUES ('', '$Exp[0]', '$Exp[1]')");
+
+
+
+/////    /doctori/procedure_doctor/all/p
+}elseif($Module=='procedure_doctor' and $Param['all']){
+
+ if(!$Param['all']) Error(1,'param all este null');
+    // if(!$Param['param']) Error(2,'parametrii de identificcare este null');
+    $Param['all']==FormChars($Param['all']);
+  
+   $qr=mysqli_query($CONNECT, "SELECT * FROM `procedure_doctor`");
+
+   $alldata='{"data":[';
+      $i=0;
+     while($bo = mysqli_fetch_assoc($qr)) {
+       // echo var_dump($bo);
+        if($i>0)$alldata.=',';
+
+        $i++;
+     	$alldata.=json_encode($bo);
+     }
+	 $alldata.=']}';
+
+	echo $alldata;
+
+
 
 }
