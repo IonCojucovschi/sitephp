@@ -1,185 +1,186 @@
-a{
-
-	text-decoration: none;
-	font-weight: bold;
-}
-
-
-
-body {
-	/*display: flex;*/
-	background: #afc6ea;
-	/*align-content: center;*/
-    justify-content: center;
-}
-
-#wrapper {
-	margin-right: 120px;
-	margin-left: 240px;
-	min-width: 700px;
-	height: auto !important;
-	transition:margin-left ease .25s;
-}
-#wrapper.hide_sidebar {
-    margin-left:0px;
-    transition:margin-left ease .25s;
-    }
-
-/* Header
------------------------------------------------------------------------------*/
-.header {
-	padding: 20px;
-	height: 150px;
-	background: url(/Resources/img/header.png);
-    background-repeat: no-repeat;
-}
-
-
-/* Middle
------------------------------------------------------------------------------*/
-.middle {
-	width: 100%;
-	padding: 0 0 100px;
-	position: relative;
-}
-.middle:after {
-	display: table;
-	clear: both;
-	content: '';
-}
-.container {
-	width: 100%;
-	float: left;
-	overflow: hidden;
-}
-.content {
-	padding: 10 10 10 10px;
-}
-
-
-/* Left Sidebar
------------------------------------------------------------------------------*/
-#left-sidebar {
-	height: 100%;
-	padding-top:30px; 
-	float: left;
-	margin-top: 140px;
-	width: 250px;
-	/*margin-bottom: 110px;*/
-	position: fixed;
-	background: #6c9ae2;
-	overflow: hidden;
-    left: 0;
-    transition: left ease 0.25s;
-}
-#left-sidebar.hide_sidebar {
-    left:-250px;
-    transition:left ease .25s;
-    }
-
-/* Footer
------------------------------------------------------------------------------*/
-.footer {
-	margin: -100px auto 0;
-	width: 100%;
-	height: 200px;
-	background: #6c9ae2;
-	position: relative;
-}
-
-/* menu
------------------------------------------------------------------------------*/
-.menu{
-display: inline-block;
-float:left;
-align-content: center;
-height: 25px;
-background: #6c9ae2;
-color: #fff;
-padding: 10px;
-font-size: 18px;
-
-}
-.menu:hover{
-text-decoration: none;
-	cursor:pointer;
-opacity: 0.5;
-
-}
-#buttonMenu{
-height: 45px;
-padding: 10px;
-font-size: 20px;
-align-content: center;
-}
-
-
-
-
-.logout{
-	color: #f44242;
-	margin-left: 50px;
-}
-
-
-.MessageBlock{
-border:1px solid #6c9ae2;
-background:#f44842;
-
-}
-
-/* there is stile for menu */
-
-.menuCategory{
-	background: #6c9ae2;
-	color: #fff;
-	height: 20px;
-	padding: 4px;
-    font-size: 15px;
-}
-     
-.menuCategory:hover{
-text-decoration: none;
-cursor:pointer;
-opacity: 0.5;
-
-}
-.menuCategory a:link{
-    color: #ffffff;
-}
-.category{
-list-style: none;
-
-}
-
-
-
-
-/*THERE IS DESIGN FOR BOOK ITEM
------------------------------------------------------------------------------*/
-.book_wrapper{
-  background:#afc6ea no-repeat center center;
-  background-size: cover;
-  height:254px;
-  width: 184px;
-  padding: 4px; 
-}
-
-.book_name{margin-right: 20px;
-	color: #1e6be8;
-	text-shadow: 3px 2px #ffffff;
-	font-size: 15px;
-	text-transform: uppercase;
-     margin-left: 20px;}
-.details{
-	background:#68bb54; 
-	padding: 10px; 
-	margin-top: 195px;
-	border-radius: 5px;
-	margin-left: 7px; }
-
-
-
-
-
-
+a{
+
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+
+body {
+	background: #afc6ea;
+    justify-content: center;
+}
+
+#wrapper {
+	margin-left: 240px;
+	min-width: 700px;
+	height: auto !important;
+	transition:margin-left ease .25s;
+}
+#wrapper.hide_sidebar {
+    margin-left:0px;
+    transition:margin-left ease .25s;
+    }
+
+/* Header
+-----------------------------------------------------------------------------*/
+.header {
+	padding: 20px;
+}
+
+
+/* Middle
+-----------------------------------------------------------------------------*/
+.middle {
+	width: 100%;
+	padding: 0 0 100px;
+	position: relative;
+}
+.middle:after {
+	display: table;
+	clear: both;
+	content: '';
+}
+.container {
+	width: 100%;
+	float: left;
+	overflow: hidden;
+}
+.content {
+	padding: 10 10 10 10px;
+}
+
+
+/* Left Sidebar
+-----------------------------------------------------------------------------*/
+#left-sidebar {
+	height: 100%;
+	padding-top:30px; 
+	float: left;
+	margin-top: 10px;
+	width: 250px;
+	position: fixed;
+	background: #6c9ae2;
+	overflow: hidden;
+    left: 0;
+    transition: left ease 0.25s;
+}
+#left-sidebar.hide_sidebar {
+    left:-250px;
+    transition:left ease .25s;
+    }
+
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer {
+	margin: -100px auto 0;
+	width: 100%;
+	height: 200px;
+	background: #6c9ae2;
+	position: relative;
+}
+
+/* menu
+-----------------------------------------------------------------------------*/
+.menu{
+display: inline-block;
+float:left;
+align-content: center;
+height: 25px;
+background: #6c9ae2;
+color: #fff;
+padding: 10px;
+font-size: 18px;
+
+}
+.menu:hover{
+text-decoration: none;
+	cursor:pointer;
+opacity: 0.5;
+
+}
+#buttonMenu{
+height: 45px;
+padding: 12px;
+font-size: 20px;
+align-content: center;
+background-repeat: no-repeat;
+background-size: contain;
+background-image: url('/Resources/img/left_arrow.png');
+}
+
+
+
+
+.logout{
+	color: #f44242;
+	margin-left: 50px;
+}
+
+
+.MessageBlock{
+border:1px solid #6c9ae2;
+background:#f44842;
+
+}
+
+/* there is stile for menu */
+
+.menuCategory{
+	background: #6c9ae2;
+	color: #fff;
+	height: 20px;
+	padding: 4px;
+    font-size: 15px;
+}
+     
+.menuCategory:hover{
+text-decoration: none;
+cursor:pointer;
+opacity: 0.5;
+
+}
+.menuCategory a:link{
+    color: #ffffff;
+}
+.category{
+list-style: none;
+
+}
+
+
+
+
+/*THERE IS DESIGN FOR BOOK ITEM
+-----------------------------------------------------------------------------*/
+.book_wrapper{
+  background-size: cover;
+  padding-bottom: 20px;
+  height:250px;
+  width: 184px;
+  padding-bottom: 20px;
+  /* padding: 4px;  */
+}
+
+.book_name{margin-right: 20px;
+	color: #1e6be8;
+	text-shadow: 3px 2px #ffffff;
+	font-size: 15px;
+	text-transform: uppercase;
+     margin-left: 20px;}
+.details{
+	background:#68bb54; 
+	padding: 10px; 
+	z-index: 99999;
+	border-radius: 5px;
+	margin-left: 7px; }
+.book_image{
+width: inherit;
+height: inherit;
+
+}
+
+
+
+
+

@@ -16,7 +16,7 @@ $Param['register']==FormChars($Param['register']);
 $Exp=explode('.', $Param['register']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
 /// echo var_dump($Exp);
 mysqli_query($CONNECT, "INSERT INTO `doctori` VALUES ('', '$Exp[0]', '$Exp[1]','$Exp[2]','$Exp[3]','$Exp[4]')");
-
+echo '{"data":"succes"}';
 
 ////   /doctori/doctori/all/some
 }elseif($Module=='doctori' and $Param['all']){
@@ -62,8 +62,7 @@ elseif($Module=="user" and $Param['register']){
     $Exp=explode('.', $Param['register']);////lincul se va transforma in array delimitatorul fiind simbolul '.'
     /// echo var_dump($Exp);
     mysqli_query($CONNECT, "INSERT INTO `Users` VALUES ('', '$Exp[2]', '$Exp[3]','noEml','$Exp[4]','$Exp[0]','$Exp[1]','0')");
-
-
+    echo '{"data":"succes"}';
 
 
 ///////   /doctori/user/all/sasad

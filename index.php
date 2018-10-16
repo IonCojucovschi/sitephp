@@ -217,7 +217,7 @@ function Head($p1){
 
 
 
-  echo '<!DOCTYPE html><html><head>	<meta charset="utf-8" /><title>'.$p1.'</title>	<meta name="keywords" content="" />	<meta name="description" content="" />	<link href="../Resources/style.css" rel="stylesheet"></head>';
+  echo '<!DOCTYPE html><html><head>	<meta charset="utf-8" /><title>'.$p1.'</title>	<meta name="keywords" content="" />	<meta name="description" content="" />	<link type="text/css" href="../Resources/style.css" rel="stylesheet" ></head>';
 
 }
 
@@ -251,9 +251,9 @@ function Menu(){
 
 	echo '<header class="header">
 
-		<div style="padding-top: 120px;">
+		<div>
 
-		  <button id="buttonMenu" class="menu"><</button>
+		  <button id="buttonMenu" class="menu"></button>
 
 		  <a href="/" class="menu">HOME</a>	
 
@@ -313,8 +313,6 @@ function Content($p1){
 
 }
 
-
-
 function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 
 ////book name is not showed '.$book_name.'
@@ -323,25 +321,12 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 
 	<li style=" margin:10px; float: left;">
 
-	<div class="book_wrapper"
-
-       style="background-image:url('.$image_link.');">
-
+	<div class="book_wrapper">
+     <img class="book_image" src="'.$image_link.'" />
 	<div class="book_name"></div>
-
-   	<button type="submit" class="details" name ="enter">
-
-   	<a href="'.$detail_link.'" action="/viewbook/viewbook">Detail</a>
-
-   	</button>
-
-   	<button class="details" type="submit">	
-
-   	<a href="'.$download_link.'">Download</a>
-
-   	</burron>
-
-	</div></li>';
+   	<a class="details" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a>
+   	<a  class="details" href="'.$download_link.'">Descarca</a>
+ 	</div></li>';
 
 }
 
