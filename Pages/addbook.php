@@ -4,29 +4,14 @@ Head('Adaoga carti');
 ?>
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 <body>
-<div id="left-sidebar">
-    <?php 
-   
-    ShowAllCategories(); 
-    ?>
-    
-    </div><!-- .left-sidebar -->
-<div id="wrapper" >
-
-    <?php Menu(); 
-          MessageShow();
-
-      ?>
-	<!-- .header-->
-
-	<div class="middle">
-
-		<div class="container">
-			<main class="content">
-				
-<div class="wrapper_container">
-  <h2>Forma pentru adaogarea cartilor</h2><hr class="hr1">
-  <div class=formUser>
+<div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
+		<?php 
+   		ShowAllCategories(); /// show all categories list 
+		?>
+		<div class="col-md-6 recs">
   <form class="register"  method="POST" action="/book/addbook" onsubmit="return validateForm()" enctype="multipart/form-data">
        <p><i>Completati urmatoarea forma.</i></p>
        <fieldset id="userData">
@@ -72,22 +57,16 @@ Head('Adaoga carti');
 
         <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Add New Book" href='/book'></p>
   </form>
-  </div>  
-</div>
+		</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
 
 
+	</div>
 
-			</main><!-- .content -->
-		</div><!-- .container-->
 
-		
-
-	</div><!-- .middle-->
-
-<?php  Footer(); ?>
-<!-- adaogam footerul -->
 </div><!-- .wrapper -->
-
 <script type="text/javascript" src="../Resources/jquery.js"></script>
 <script type="text/javascript" src="../Resources/script.js"></script>
 </body>

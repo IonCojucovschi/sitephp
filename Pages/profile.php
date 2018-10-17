@@ -4,30 +4,14 @@ Head('Pagina principala');
 ?>
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 <body>
-
-<div id="left-sidebar">
+<div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
 		<?php 
-   
-		ShowAllCategories(); 
+   		ShowAllCategories(); /// show all categories list 
 		?>
-		
-		</div><!-- .left-sidebar -->
-
-<div id="wrapper" >
-
-    <?php Menu();  
-    MessageShow(); ?>
-	<!-- .header-->
-
-	<div class="middle">
-
-		<div class="container">
-			<main class="content">
-                  <div >
-                  	<img src="" height="200" width="150" style="background: #ffffff;">
-                  </div>   
-
-
+		<div class="col-md-6 recs">
 			      <form class="register"  method="POST" action="/account/edit" onsubmit="return validateForm()">
 			       <fieldset id="userData">
 			         <legend>Modifica datele</legend>
@@ -53,13 +37,15 @@ Head('Pagina principala');
 			        </fieldset>
 			        <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Salveaza" href='/account'></p>
 			  </form>
+		</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
 
-			</main><!-- .content -->
-		</div><!-- .container-->
-	</div><!-- .middle-->
 
-<?php  Footer(); ?>
-<!-- adaogam footerul -->
+	</div>
+
+
 </div><!-- .wrapper -->
 
 <script type="text/javascript" src="../Resources/jquery.js"></script>

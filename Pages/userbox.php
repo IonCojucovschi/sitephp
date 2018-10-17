@@ -3,26 +3,16 @@ Head('Pagina principala');
 ?>
 
 <body>
-<div id="left-sidebar">
+div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
 		<?php 
-   
-		ShowAllCategories(); 
+   		ShowAllCategories(); /// show all categories list 
 		?>
-		
-		</div><!-- .left-sidebar -->
-
-
-
-<div id="wrapper" >
-
-    <?php Menu();  MessageShow(); ?>
-	<!-- .header-->
-
-	<div class="middle">
-
-		<div class="container">
-			<main class="content">
-				<ul style="list-style-type: none;">
+		<div class="col-md-6 recs">
+			<div class="title">Carti recomandate</div>
+					<ul class="books" style="list-style-type: none;">
                      <?php 
                     
                      	$books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` where `id` in (SELECT `book_id` FROM `wishread` where user_id='$_SESSION[USER_ID]')");
@@ -41,18 +31,16 @@ Head('Pagina principala');
 				  ?>
 
 				</ul>
-				
-			</main><!-- .content -->
-		</div><!-- .container-->
+		</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
 
-		
 
-	</div><!-- .middle-->
- 
-<?php  Footer(); ?>
-<!-- adaogam footerul -->
+	</div>
 
- </div><!--wrapper-->	
+
+</div><!-- .wrapper -->
 <script type="text/javascript" src="../Resources/jquery.js"></script>
 <script type="text/javascript" src="../Resources/script.js"></script>
 </body>

@@ -5,20 +5,14 @@ Head('Restabilire parola');
 <link rel="stylesheet" type="text/css" href="Resources/register.css">
 
 <body>
-<div id="left-sidebar">
-    <?php 
-   
-    ShowAllCategories(); 
-    ?>
-    
-    </div><!-- .left-sidebar -->
-
-
-
-<div id="wrapper" >
-
-    <?php Menu();   ?>
-	<!-- .header-->
+<div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
+		<?php 
+   		ShowAllCategories(); /// show all categories list 
+		?>
+		<div class="col-md-6 recs">
     <?php  Content('<h2>Logation Form</h2>'.MessageShow().'
     <form id="", method="POST" action="/account/restore" onsubmit="return validateForm()">
            <label class="registercomponent" for="login">Login<em>*</em></label>
@@ -30,12 +24,16 @@ Head('Restabilire parola');
        
         <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Restabileste"></p>
      </form>'); ?>
- 
-     
-<?php  Footer(); ?>
-<!-- adaogam footerul -->
+		</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
 
- </div><!--wrapper-->	
+
+	</div>
+
+
+</div><!-- .wrapper -->
 <script type="text/javascript" src="../Resources/jquery.js"></script>
 <script type="text/javascript" src="../Resources/script.js"></script>
 </body>

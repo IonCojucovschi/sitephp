@@ -4,31 +4,16 @@ Head('Pagina principala');
 <link href="../../../Resources/style.css" rel="stylesheet">
 
 <body>
-
-<div id="left-sidebar">
+<div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
 		<?php 
-   
-		ShowAllCategories(); 
+   		ShowAllCategories(); /// show all categories list 
 		?>
-		
-		</div><!-- .left-sidebar -->
-
-<div id="wrapper" >
-
-    <?php 
-      if($Module=='category')
-     {
-       $Param['name']==FormChars($Param['name']);
-	    $_SESSION['CATEGORY_BOOK']=$Param['name'];
-
-	 }
-    Menu();  MessageShow(); ?>
-	<!-- .header-->
-
-	<div class="middle">
-
-		<div class="container">
-			<main class="content">
+		<div class="col-md-6 recs">
+			<div class="title">Carti recomandate</div>
+					<ul class="books" style="list-style-type: none;">
 				<ul style="list-style-type: none;">
                      <?php  
 				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` Where category='$_SESSION[CATEGORY_BOOK]'");
@@ -45,16 +30,15 @@ Head('Pagina principala');
 				  ?>
 
 				</ul>
-				
-			</main><!-- .content -->
-		</div><!-- .container-->
+		</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
 
-		
 
-	</div><!-- .middle-->
-<div class="footer">
-    ReadAboock : every dey is mor beautifull with me!!!!
-</div>
+	</div>
+
+
 </div><!-- .wrapper -->
 
 <script type="text/javascript" src="../../../Resources/jquery.js"></script>

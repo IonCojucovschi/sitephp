@@ -3,15 +3,6 @@ Head('Pagina principala');
 ?>
 <link href="../../../Resources/style.css" rel="stylesheet">
 <body>
-   <div id="left-sidebar">
-    <?php 
-
-    ShowAllCategories(); 
-    ?>
-    
-    </div><!-- .left-sidebar -->
-
-<div id="wrapper" >
 
     <?php 
     
@@ -50,21 +41,17 @@ Head('Pagina principala');
              
            }
 
+     } ?>
+<div class="wrapper" >
+	  <div class="header">headerul </div>
+	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
+<div class="row middle" >
+		<?php 
+   		ShowAllCategories(); /// show all categories list 
+		?>
+		<div class="col-md-6 recs">
 
 
-
-
-
-
-     }
-     MessageShow();
-    Menu(); ?>
-	<!-- .header-->
-
-	<div class="middle">
-
-		<div class="container">
-			<main class="content">
 				<div style="margin: 30 auto;">
 					<br>
 				    <?php echo '<div class="book_wrapper" style="margin-left: 20px; float: left; background-image:url(../../../'.$qr['image_linq'].');"></div>'; ?>
@@ -101,18 +88,13 @@ Head('Pagina principala');
 				  ?>
 
 				</ul>
-				
-			</main><!-- .content -->
+			</div>
+		<div class="col-md-2 best10"><!-- best Views -->
+			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</div>
+</div>
 
-		</div><!-- .container-->
-
-		
-
-	</div><!-- .middle-->
-   <?php  Footer(); ?>
-    <!-- adaogam footerul -->
-
- </div><!--wrapper-->   
+</div><!-- .wrapper -->
 <script type="text/javascript" src="../Resources/jquery.js"></script>
 <script type="text/javascript" src="../Resources/script.js"></script>
 </body>
