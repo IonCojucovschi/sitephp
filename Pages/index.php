@@ -44,7 +44,7 @@ Head('Pagina principala');
 					</ul>
 					
 		</div>
-		<div class="col-md-3 "><!-- best Views -->
+		<div class="col-md-2 "><!-- best Views -->
 			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
 		</div>
 
