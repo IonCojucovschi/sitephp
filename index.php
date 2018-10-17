@@ -217,7 +217,12 @@ function Head($p1){
 
 
 
-  echo '<!DOCTYPE html><html><head>	<meta charset="utf-8" /><title>'.$p1.'</title>	<meta name="keywords" content="" />	<meta name="description" content="" />	<link type="text/css" href="../Resources/style.css" rel="stylesheet" ></head>';
+  echo '<!DOCTYPE html><html><head>	<meta charset="utf-8" />
+			  <title>'.$p1.'</title>
+				  <meta name="keywords" content="" />	<meta name="description" content="" />
+				  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  	<link type="text/css" href="../Resources/style.css" rel="stylesheet" ></head>';
 
 }
 
@@ -229,39 +234,52 @@ function Menu(){
 
    if($_SESSION['USER_LOGIN_IN']!=1) 
 
-   	$Menu='<a  href="/register" class="menu">Inregistrare</a>	
+	   $Menu='
+	   <li>
+	   <a  href="/register" class="menu">Inregistrare</a>	
+		</li>
+	   <li>
+	  		 <a href="/login"  class="link">Logare</a>
+		</li>
+			<li>
+				<a  href="/restore" class="link">Restabilire Parola</a>	
+			</li>  ';
 
-          <a href="/login"  class="menu">Logare</a>
+	else $Menu='
+	
+	<li>
+	<a  href="/addbook" class="link">Adaoga Carti</a>
+			
+	</li>
+	
+	<li>
+	  <a  href="/profile" class="menu">Profil</a>
+			
+	</li>
+	
+	<li>
+	  <a  href="/userbox" class="link">Vreau sa Citesc</a>
+			
+	</li>
+	
+	<li>
+	<a  href="/account/logout" class="link , logout">Iesi</a>
+	</li>';
 
-          <a  href="/restore" class="menu">Restabilire Parola</a>	';
 
-    else $Menu='<a  href="/addbook" class="menu">Adaoga Carti</a>
-
-      	<a  href="/profile" class="menu">Profil</a>
-
-         <a  href="/userbox" class="menu">Vreau sa Citesc</a>
-
-      	<a  href="/account/logout" class="menu , logout">Iesi</a>';
-
-
-
-      	
-
-
-
-	echo '<header class="header">
-
-		<div>
-
-		  <button id="buttonMenu" class="menu"></button>
-
-		  <a href="/" class="menu">HOME</a>	
-
-          '.$Menu.'
-
-         </div>          
-
-	</header>';
+	echo '<div class="nav">
+           <ul id="navbar">
+			<li>
+			<button id="buttonMenu" class="link"></button>
+			</li>
+		  
+			<li>
+			  <a href="/" class="link">HOME</a>				
+			</li>
+			
+          '.$Menu.'         
+         </ul>
+	</div>';
 
 }
 
@@ -359,16 +377,7 @@ function BookNumber($p1=''){
 
 
 
-
-
-
-
-
 /////Helper function for worck
-
-
-
-
 
 function RandomeString($p1){
 
@@ -390,10 +399,6 @@ $Explode=explode('@', $p1);
 
 return $Explode[0].'@'.'xxxxxx';
 
-
-
-
-
 }
 
 
@@ -410,7 +415,10 @@ function ShowAllCategories()
 
 
 
-		$showCategory='<ul class="category">';
+		$showCategory='
+		<div class="col-md-3 category">
+		<div class="title">Categorii</div>
+		<ul class="categ">';
 
 	    if($qrii)
 
@@ -418,15 +426,17 @@ function ShowAllCategories()
 
 	     	while($bo = mysqli_fetch_assoc($qrii)) {
 
-	         $showCategory.='<li class="menuCategory" 
-
-             ><a style="color=#ffffff;" href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    (".$bo['quantity'].')</a></li>';
+			 $showCategory.='<li>
+					 <a style="color=#ffffff;" 
+						href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    (".$bo['quantity'].')
+						</a>
+					</li><hr/>';
 
 	        }
 
 	     }
 
-	    $showCategory.='</ul>';
+	    $showCategory.='</ul></div>';
 
 
 

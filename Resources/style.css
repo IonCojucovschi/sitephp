@@ -1,113 +1,166 @@
-a{
+/* 
+$brown: #d2691e;
+$tan: #d2b48c;
+$lightG: #c1cdc1; */
 
-	text-decoration: none;
-	font-weight: bold;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-
 
 body {
-	background: #afc6ea;
-    justify-content: center;
-}
-
-#wrapper {
-	margin-left: 240px;
-	min-width: 700px;
-	height: auto !important;
-	transition:margin-left ease .25s;
-}
-#wrapper.hide_sidebar {
-    margin-left:0px;
-    transition:margin-left ease .25s;
-    }
-
-/* Header
------------------------------------------------------------------------------*/
-.header {
-	padding: 20px;
+  background: #c1cdc1;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 
-/* Middle
------------------------------------------------------------------------------*/
-.middle {
+.wrapper {
+	background: white;
+	width: 95%;
+	margin: 20px auto;
+   /* border: 2px solid red; */
+	padding: 0;
+	border-radius: 6px;
+	box-shadow: 0 0 2px 2px rgba(0,0,0,0.3);
+  }
+  
+  .nav {
 	width: 100%;
-	padding: 0 0 100px;
-	position: relative;
-}
-.middle:after {
-	display: table;
-	clear: both;
-	content: '';
-}
-.container {
+	background-image: linear-gradient(to bottom, #d2691e, #8b4513);
+	border-radius: 5px;
+	/* float: left; */
+  }
+  
+  #navbar {
+	list-style-type: none;
+	/* padding: 5px; */
+	margin: 0;
+	text-align: center;
+  }
+  
+  .nav li {
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	margin: 5px 60px;
+	/* margin: 0 50px; */
+	text-align: center;
+  }
+  
+  .nav li a:hover {
+	  color: white;
+	  background: #d2691e;
+	text-decoration: underline;
+  }
+  
+  .link {
+	color: white;
+	font-size: 20px;
+  }
+
+
+
+  .top {
 	width: 100%;
-	float: left;
-	overflow: hidden;
-}
-.content {
-	padding: 10 10 10 10px;
-}
-
-
-/* Left Sidebar
------------------------------------------------------------------------------*/
-#left-sidebar {
-	height: 100%;
-	padding-top:30px; 
-	float: left;
-	margin-top: 10px;
-	width: 250px;
-	position: fixed;
-	background: #6c9ae2;
-	overflow: hidden;
-    left: 0;
-    transition: left ease 0.25s;
-}
-#left-sidebar.hide_sidebar {
-    left:-250px;
-    transition:left ease .25s;
-    }
-
-/* Footer
------------------------------------------------------------------------------*/
-.footer {
-	margin: -100px auto 0;
+	margin: 4px;
+	margin-left: -10px;
+  }
+  
+  #main {
 	width: 100%;
-	height: 200px;
-	background: #6c9ae2;
-	position: relative;
-}
+	height: 300px;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+  }
+  
+  #main li {
+	padding: 8px;
+	flex: 0 1 auto;
+	/* margin: 2px; */
+  }
+  
+  #main img {
+	border-radius: 5px;
+	box-shadow: 0 0 2px 3px rgba(0,0,0,0.2);
+  }
+  
+  #new {
+	width: 35%;
+  }
+  
+  #best {
+	width: 63%;
+  }
 
-/* menu
------------------------------------------------------------------------------*/
-.menu{
-display: inline-block;
-float:left;
-align-content: center;
-height: 25px;
-background: #6c9ae2;
-color: #fff;
-padding: 10px;
-font-size: 18px;
+  .middle {
+	width: 100%;
+	margin: 10px;
+  }
+  
+  .category {
+	background: #c0c0c0;
+	text-align: center;
+	margin-right: 15px;
+	font-size: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 2px rgba(0,0,0,0.5);
+  }
+  
+  .categ {
+	list-style-type: none;
+  }
+  
+  hr {
+	margin: 8px;
+  }
+  
+  .title {
+	padding-top: 10px;
+	font-size: 30px;
+	font-family: 'Cormorant Unicase', serif;
+	text-align: center;
+  }
+  
 
-}
-.menu:hover{
-text-decoration: none;
-	cursor:pointer;
-opacity: 0.5;
+  .recs {
+	background: #c0c0c0;
+	padding: 0 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 3px 2px rgba(0,0,0,0.5);
+	margin-right: 15px;
+  }
+  
+  .books {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+	/* border: 1px solid red; */
+  }
+  
+  .best10 {
+	width: 200px;
+	margin-left: -10px;
+  }
+  
 
-}
-#buttonMenu{
-height: 45px;
-padding: 12px;
-font-size: 20px;
-align-content: center;
-background-repeat: no-repeat;
-background-size: contain;
-background-image: url('/Resources/img/left_arrow.png');
-}
+  #short {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	height: 250px;
+	border-radius: 20px;
+	box-shadow: 0 0 3px 2px rgba(0,0,0,0.5);
+   /*  height: 50%; */
+  }
+
+/* 
+Rebranding  */
+
 
 
 
@@ -123,33 +176,6 @@ border:1px solid #6c9ae2;
 background:#f44842;
 
 }
-
-/* there is stile for menu */
-
-.menuCategory{
-	background: #6c9ae2;
-	color: #fff;
-	height: 20px;
-	padding: 4px;
-    font-size: 15px;
-}
-     
-.menuCategory:hover{
-text-decoration: none;
-cursor:pointer;
-opacity: 0.5;
-
-}
-.menuCategory a:link{
-    color: #ffffff;
-}
-.category{
-list-style: none;
-
-}
-
-
-
 
 /*THERE IS DESIGN FOR BOOK ITEM
 -----------------------------------------------------------------------------*/
