@@ -236,7 +236,7 @@ function Menu(){
 
 	   $Menu='
 	   <li>
-	   <a  href="/register" class="menu">Inregistrare</a>	
+	   <a  href="/register" class="link">Inregistrare</a>	
 		</li>
 	   <li>
 	  		 <a href="/login"  class="link">Logare</a>
@@ -248,12 +248,12 @@ function Menu(){
 	else $Menu='
 	
 	<li>
-	<a  href="/addbook" class="link">Adaoga Carti</a>
+	<a  href="/addbook" class="link">Adauga Carti</a>
 			
 	</li>
 	
 	<li>
-	  <a  href="/profile" class="menu">Profil</a>
+	  <a  href="/profile" class="link">Profil</a>
 			
 	</li>
 	
@@ -274,7 +274,7 @@ function Menu(){
 			</li>
 		  
 			<li>
-			  <a href="/" class="link">HOME</a>				
+			  <a href="/" class="link">Acasa</a>				
 			</li>
 			
           '.$Menu.'         
@@ -293,7 +293,7 @@ function Footer(){
 
 echo ' <footer class="footer">
 
-	ReadAboock : every dey is mor beautifull with me!!!!
+	ReadAbook COMME SOON!!!
 
 </footer>' ;
 
