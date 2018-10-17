@@ -13,9 +13,15 @@ Head('Pagina principala');
 		?>
 		<div class="col-md-6 recs">
 			<div class="title">Carti recomandate</div>
-					<ul class="books" style="list-style-type: none;">
-				<ul style="list-style-type: none;">
-                     <?php  
+				<ul class="books" style="list-style-type: none;">
+					    <?php ///i think this portion of code must not be exist ,,,, but let it be...... 
+						if($Module=='category')
+						{
+						$Param['name']==FormChars($Param['name']);
+							$_SESSION['CATEGORY_BOOK']=$Param['name'];
+
+						}
+
 				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books` Where category='$_SESSION[CATEGORY_BOOK]'");
                     while ($row=mysqli_fetch_array($books)) {
                     

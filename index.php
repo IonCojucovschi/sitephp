@@ -270,10 +270,6 @@ function Menu(){
 	echo '<div class="nav">
            <ul id="navbar">
 			<li>
-			<button id="buttonMenu" class="link"></button>
-			</li>
-		  
-			<li>
 			  <a href="/" class="link">Acasa</a>				
 			</li>
 			
@@ -298,9 +294,7 @@ echo '
 			</li>
 			<img id="best" src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/279888/1360/900/m1/fpnw/wm1/jhgtmbe2asdop4la4pprhgnapb7ry0a0oobq3lve4skeufnmw9ngeus2h08kxoo2-.jpg?1419244216&s=ed78544680e179b93db67115bd9cbb48">
 		</ul>
-	</div>
-
-';
+	</div>';
 
 }
 
