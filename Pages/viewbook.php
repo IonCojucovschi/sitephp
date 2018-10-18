@@ -66,8 +66,8 @@ Head('Pagina principala');
 			    	<br>
                  	<b>Descriere:</b>   <?php echo " ".$qr['description']; ?>
                 </div>			 
-				<ul style="list-style-type: none;">
-                     <?php  
+				<ul class="books" style="list-style-type: none;">
+                     <?php  $contor=0;
 				   $books=mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`");
                     while ($row=mysqli_fetch_array($books)) {
                     	$contor++;
@@ -91,7 +91,7 @@ Head('Pagina principala');
 </div>
 
 </div><!-- .wrapper -->
-<script type="text/javascript" src="../Resources/jquery.js"></script>
-<script type="text/javascript" src="../Resources/script.js"></script>
+<script type="text/javascript" src="../../../Resources/jquery.js"></script>
+<script type="text/javascript" src="../../../Resources/script.js"></script>
 </body>
 </html>
