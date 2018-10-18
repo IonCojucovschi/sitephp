@@ -220,9 +220,13 @@ function Head($p1){
   echo '<!DOCTYPE html><html><head>	<meta charset="utf-8" />
 			  <title>'.$p1.'</title>
 				  <meta name="keywords" content="" />	<meta name="description" content="" />
+				    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 				  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  	<link type="text/css" href="../Resources/style.css" rel="stylesheet" ></head>';
+	<link type="text/css" href="../Resources/style.css" rel="stylesheet" >
+	<script href="../Resources/script.js"></script>
+	  </head>';
 
 }
 
@@ -266,8 +270,24 @@ function Menu(){
 	<a  href="/account/logout" class="link , logout">Iesi</a>
 	</li>';
 
+////we add there header
+	echo '
+	<div class="header">
+     <ul id="brand">
+	    <li>
+		   <img  id="logoImg" src="https://cdn.icon-icons.com/icons2/390/PNG/512/open-book_38991.png"   />
+		</li>
+	    <li>
+		   <div class="logo">ReadABook</div>
+		</li>
+	    <li>
+		    <div class="search">Cauta</div>
+		</li>
+	 </ul>
 
-	echo '<div class="nav">
+	</div>
+	
+	<div class="nav">
            <ul id="navbar">
 			<li>
 			  <a href="/" class="link">Acasa</a>				
@@ -298,31 +318,13 @@ echo '
 
 }
 
-function Content($p1){
+function BestBooks(){
 
 
 
-	echo '<div class="middle">
-
-
-
-		<div class="container">
-
-			<main class="content">
-
-				'.$p1.'
-
-			</main><!-- .content -->
-
-		</div><!-- .container-->
-
-
-
-		
-
-
-
-	</div><!-- .middle-->';
+	echo '	<div class="col-md-2 best10"><!-- best Views -->
+			    <img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		    </div>';
 
 }
 
@@ -331,13 +333,10 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 ////book name is not showed '.$book_name.'
 
 	echo '
-
-	<li class="book">
-
+	<li class="book" >
      <img class="bookImg" src="'.$image_link.'" />
 	<div class="book_name">"'.$book_name.'"</div>
-   	<a class="buttonBook" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a>
-   	<a  class="buttonBook" href="'.$download_link.'">Descarca</a>
+   	<div><a class="buttonBook" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$download_link.'">Descarca</a></div>   	
     </li>';
 
 }

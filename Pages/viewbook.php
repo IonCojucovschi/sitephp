@@ -1,7 +1,6 @@
 <?php
 Head('Pagina principala');
 ?>
-<link href="../../../Resources/style.css" rel="stylesheet">
 <body>
 
     <?php 
@@ -17,11 +16,8 @@ Head('Pagina principala');
 
         $qr=mysqli_fetch_assoc($bookQuery);
          if(!$bookQuery)MesageSend(1,'Nu sa putut extrage asa carte.');  
-
-
          if ($Module=='viewbook' and $Param['WantRead']) {
-
-                         
+               
              $Param['WantRead']==FormChars($Param['WantRead']);
              $_SESSION['DETAILBOOK_ID']=$Param['WantRead'];
               $bookQuery=mysqli_query($CONNECT, "SELECT * FROM `books` WHERE id='$Param[WantRead]'");
@@ -43,7 +39,6 @@ Head('Pagina principala');
 
      } ?>
 <div class="wrapper" >
-	  <div class="header">headerul </div>
 	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
 <div class="row middle" >
 		<?php 
@@ -54,7 +49,7 @@ Head('Pagina principala');
 
 				<div style="margin: 30 auto;">
 					<br>
-				    <?php echo '<div class="book_wrapper" style="margin-left: 20px; float: left; background-image:url(../../../'.$qr['image_linq'].');"></div>'; ?>
+				    <div style="width:105px;"><?php echo '<img class="bookImg" src="../../../'.$qr['image_linq'].'"/>'; ?></div>
                     <div style="float: left; margin-left: 20px; padding-top: 30px;">
                          <b>Titlu: </b><?php  echo " ".$qr['title']  ?><br><br>
                          <b>Autorul: </b><?php  echo " ".$qr['author']  ?><br><br>
@@ -89,9 +84,10 @@ Head('Pagina principala');
 
 				</ul>
 			</div>
-		<div class="col-md-2 best10"><!-- best Views -->
-			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
-		</div>
+			<?php 
+	  BestBooks();//// best books
+	
+	  ?>
 </div>
 
 </div><!-- .wrapper -->

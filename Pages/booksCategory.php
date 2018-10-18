@@ -1,11 +1,8 @@
 <?php
 Head('Pagina principala');
 ?>
-<link href="../../../Resources/style.css" rel="stylesheet">
-
 <body>
 <div class="wrapper" >
-	  <div class="header">headerul </div>
 	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
 <div class="row middle" >
 		<?php 
@@ -37,9 +34,10 @@ Head('Pagina principala');
 
 				</ul>
 		</div>
-		<div class="col-md-2 best10"><!-- best Views -->
-			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
-		</div>
+		<?php 
+	  BestBooks();//// best books
+	
+	  ?>
 
 
 	</div>

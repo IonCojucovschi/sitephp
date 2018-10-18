@@ -2,7 +2,6 @@
 ULogin(1);
 Head('Adaoga carti');
 ?>
-<link rel="stylesheet" type="text/css" href="Resources/register.css">
 <body>
 <div class="wrapper" >
 	  <div class="header">headerul </div>
@@ -58,9 +57,10 @@ Head('Adaoga carti');
         <p><input style="background:#68bb54; padding: 10px; border-radius: 5px;" type="submit" name ="enter" value="Add New Book" href='/book'></p>
   </form>
 		</div>
-		<div class="col-md-2 best10"><!-- best Views -->
-			<img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
-		</div>
+		<?php 
+	  BestBooks();//// best books
+	
+	  ?>
 
 
 	</div>

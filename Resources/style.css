@@ -10,6 +10,31 @@ body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
+#brand {
+  width: 100%;
+  /*//height: 200px;*/
+  /*//border: 1px solid black;*/
+  padding: 0 60px;
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin-bottom: 0;
+}
+  #logoImg {
+    width: 130px;
+    height: 100px;
+    margin-right: 50px;
+  }
+  
+  .logo {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Cormorant Unicase', serif;
+    width: 900px;
+  }
+  .search {
+    font-size: 20px;
+  }
 
 .wrapper {
 	background: white;
@@ -135,7 +160,7 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
-	/* border: 1px solid red; */
+	/*border: 1px solid red;*/
   }
   
   .best10 {
@@ -207,6 +232,7 @@ height: inherit;
 /*THERE IS DESIGN FOR BOOK ITEM
 ---------------------------- OlD version -------------------------------------------------*/
 .book {
+	display: inline-block;
   width: 150px;
   margin: 10px;
   padding: 10px;
@@ -222,13 +248,13 @@ height: inherit;
   .buttonBook {
     margin-top: 10px;
     width: 60px;
-    padding: 3px;
-    border: 1px solid #c1cdc1;
+    padding: 6px;
+    border: 1px solid #a94242;
     border-radius: 40px;
-    margin-left: 35px;
+    margin: 3px;
 }
 .buttonBook:hover {
-      background: #c1cdc1;
+      background: #a94242;
       color: white;
     }
 
