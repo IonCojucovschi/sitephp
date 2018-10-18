@@ -23,15 +23,12 @@ Head('Pagina principala');
 	                        }
 	                    }
 					  ?>
-
 					</ul>
 		</div>
 	<?php 
 	  BestBooks();//// best books
 	 ?>
-
-
-	</div>
+	 </div>
 
 
 </div><!-- .wrapper -->

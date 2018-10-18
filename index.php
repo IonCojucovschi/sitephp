@@ -320,18 +320,35 @@ echo '
 
 function BestBooks(){
 
+	if($_SESSION['USER_LOGIN_IN'])
+	{
+		$result='<div class="col-md-2 best10">
+		<div class="title">Top Carti</div>
+		<ul>';
 
-
-	echo '	<div class="col-md-2 best10"><!-- best Views -->
+	   //$bookks=;
+	   while ($row=mysqli_fetch_array(mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`"))) {
+		   $result+='
+		   <li class="book">
+			<img class="bookImg" data-toggle="collapse"   src="'.str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']).'" data-target="#bookid'.$row['id'].'"/>
+		    <div class="book_name collapse" id="bookid'.$row['id'].'">"'.$row['title'].'"</div>
+			<div><a class="buttonBook" name ="enter" href="/viewbook/viewbook/detail/'.$row['id'].'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$row['download_linq'].'">Descarca</a></div>   	
+		   </li>';	       
+		}
+		$result+='</ul></div>';
+		echo $result;
+	}else
+	{	
+			echo '	<div class="col-md-2 best10"><!-- best Views -->
+	        <div class="title">Top Carti</div>
 			    <img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
 		    </div>';
-
+	
+	}
 }
 
 function BookFoorm($book_name,$image_link,$download_link,$detail_link,$id){
-
 ////book name is not showed '.$book_name.'
-
 	echo '
 	<li class="book" >
      <img class="bookImg" data-toggle="collapse"   src="'.$image_link.'" data-target="#bookid'.$id.'"/>
@@ -379,17 +396,12 @@ function RandomeString($p1){
   for($i=0;$i<$p1;$i++) $String.=$Char[rand(0,strlen($Char)-1)];
 
   	return $String;
-
-
-
 }
 
 
 
 function HideEmail($p1){
-
 $Explode=explode('@', $p1);
-
 return $Explode[0].'@'.'xxxxxx';
 
 }
