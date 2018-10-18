@@ -224,7 +224,7 @@ function Head($p1){
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 				  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<link type="text/css" href="../Resources/style.css" rel="stylesheet" >
+	<link type="text/css" href="../../../Resources/style.css" rel="stylesheet" >
 	<script href="../Resources/script.js"></script>
 	  </head>';
 
@@ -269,7 +269,9 @@ function Menu(){
 	<li>
 	<a  href="/account/logout" class="link , logout">Iesi</a>
 	</li>';
-
+// <li>
+// 		    <div class="search">Cauta</div>
+// 		</li>
 ////we add there header
 	echo '
 	<div class="header">
@@ -280,9 +282,7 @@ function Menu(){
 	    <li>
 		   <div class="logo">ReadABook</div>
 		</li>
-	    <li>
-		    <div class="search">Cauta</div>
-		</li>
+	    
 	 </ul>
 
 	</div>
@@ -328,14 +328,15 @@ function BestBooks(){
 
 }
 
-function BookFoorm($book_name,$image_link,$download_link,$detail_link){
+function BookFoorm($book_name,$image_link,$download_link,$detail_link,$id){
 
 ////book name is not showed '.$book_name.'
 
 	echo '
 	<li class="book" >
-     <img class="bookImg" src="'.$image_link.'" />
-	<div class="book_name">"'.$book_name.'"</div>
+     <img class="bookImg" data-toggle="collapse"   src="'.$image_link.'" data-target="#bookid'.$id.'"/>
+	<div class="book_name collapse" id="bookid'.$id.'">"'.$book_name.'"</div>
+	<br/>
    	<div><a class="buttonBook" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$download_link.'">Descarca</a></div>   	
     </li>';
 

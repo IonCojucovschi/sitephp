@@ -234,6 +234,7 @@ height: inherit;
 .book {
 	display: inline-block;
   width: 150px;
+  display: none;
   margin: 10px;
   padding: 10px;
   list-style-type: none;
@@ -249,6 +250,7 @@ height: inherit;
     margin-top: 10px;
     width: 60px;
     padding: 6px;
+    background: #ffffff;
     border: 1px solid #a94242;
     border-radius: 40px;
     margin: 3px;

@@ -16,10 +16,10 @@ Head('Pagina principala');
 	                    while ($row=mysqli_fetch_array($books)) {
 	                    	if($_SESSION['USER_LOGIN_IN'])
 	                    	{
-	                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id']);
+	                    		BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),$row['download_linq'],'/viewbook/viewbook/detail/'.$row['id'],$row['id']);
 	                        }else
 	                        {
-	                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id']);
+	                        	BookFoorm($row['title'],str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']),'login','/viewbook/viewbook/detail/'.$row['id'],$row['id']);
 	                        }
 	                    }
 					  ?>
