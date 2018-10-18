@@ -336,7 +336,6 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link,$id){
 	<li class="book" >
      <img class="bookImg" data-toggle="collapse"   src="'.$image_link.'" data-target="#bookid'.$id.'"/>
 	<div class="book_name collapse" id="bookid'.$id.'">"'.$book_name.'"</div>
-	<br/>
    	<div><a class="buttonBook" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$download_link.'">Descarca</a></div>   	
     </li>';
 
