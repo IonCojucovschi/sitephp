@@ -298,24 +298,6 @@ echo '
 
 }
 
-
-
-function Footer(){
-
-
-
-echo ' <footer class="footer">
-
-	ReadAbook COMME SOON!!!
-
-</footer>' ;
-
-
-
-}
-
-
-
 function Content($p1){
 
 
@@ -350,14 +332,13 @@ function BookFoorm($book_name,$image_link,$download_link,$detail_link){
 
 	echo '
 
-	<li style=" margin:10px; float: left;">
+	<li class="book">
 
-	<div class="book_wrapper">
-     <img class="book_image" src="'.$image_link.'" />
-	<div class="book_name"></div>
-   	<a class="details" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a>
-   	<a  class="details" href="'.$download_link.'">Descarca</a>
- 	</div></li>';
+     <img class="bookImg" src="'.$image_link.'" />
+	<div class="book_name">"'.$book_name.'"</div>
+   	<a class="buttonBook" name ="enter" href="'.$detail_link.'" action="/viewbook/viewbook">Vezi</a>
+   	<a  class="buttonBook" href="'.$download_link.'">Descarca</a>
+    </li>';
 
 }
 
