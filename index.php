@@ -324,25 +324,34 @@ function BestBooks(){
 	{
 		$result='<div class="col-md-2 best10">
 		<div class="title">Top Carti</div>
-		<ul>';
+		<ul>
+		<li>
+		  <img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
+		</li>
+		</ul></div>';
 
-	   //$bookks=;
-	   while ($row=mysqli_fetch_array(mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`"))) {
-		   $result+='
-		   <li class="book">
-			<img class="bookImg" data-toggle="collapse"   src="'.str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']).'" data-target="#bookid'.$row['id'].'"/>
-		    <div class="book_name collapse" id="bookid'.$row['id'].'">"'.$row['title'].'"</div>
-			<div><a class="buttonBook" name ="enter" href="/viewbook/viewbook/detail/'.$row['id'].'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$row['download_linq'].'">Descarca</a></div>   	
-		   </li>';	       
-		}
-		$result+='</ul></div>';
+	//    while ($row=mysqli_fetch_array(mysqli_query($CONNECT,"SELECT `id`,`title`,`download_linq`,`image_linq` FROM `books`"))) {
+	// 	   $result+='
+	// 	   <li class="book">
+	// 		<img class="bookImg" data-toggle="collapse"   src="'.str_replace(" ",".DIRECTORY_SEPARATOR",$row['image_linq']).'" data-target="#bookid'.$row['id'].'"/>
+	// 	    <div class="book_name collapse" id="bookid'.$row['id'].'">"'.$row['title'].'"</div>
+	// 		<div><a class="buttonBook" name ="enter" href="/viewbook/viewbook/detail/'.$row['id'].'" action="/viewbook/viewbook">Vezi</a><a  class="buttonBook" href="'.$row['download_linq'].'">Descarca</a></div>   	
+	// 	   </li>';	       
+	// 	}
+	// 	$result+='</ul></div>';
 		echo $result;
 	}else
 	{	
 			echo '	<div class="col-md-2 best10"><!-- best Views -->
-	        <div class="title">Top Carti</div>
-			    <img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
-		    </div>';
+	        <div class="title">Log in:</div>
+              '.MessageShow().'
+		<form id="short" class="form-group" method="POST" action="/account/login" onsubmit="return validateForm()">
+				<input placeholder="login" class="form-control"  id="login" name ="login"  autofocus required pattern="[A-Za-z-0-9]{3,10}" title="Trebuie sa fie cuprins intre 3 si 10 simboluri"><br>
+				<input placeholder="password" class="form-control"  id="pass" type="password" name="pasword" autofocus required><br>
+				<input class="form-check-input" id="remember" type="checkbox" name="remember"> Retineti contul <br>
+			<p><input class="btn btn-primary" type="submit" name ="enter" href="/account" value="Log in"></p>
+		</form>
+     </div>';
 	
 	}
 }
