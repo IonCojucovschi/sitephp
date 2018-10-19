@@ -1,4 +1,4 @@
 $(document).ready(function(){
     
-  $(".book").fadeIn('slow');       
+  $(".book").fadeIn(2500);       
 });

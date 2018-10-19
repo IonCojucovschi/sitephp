@@ -324,7 +324,7 @@ function BestBooks(){
 	{
 		$result='<div class="col-md-2 best10">
 		<div class="title">Top Carti</div>
-		<ul>
+		<ul style="list-style-type: none;">
 		<li>
 		  <img id="short"  src="http://www.sollasbooks.com/wp-content/gallery/thin-twin-red-square/thin-twin-red.jpg">
 		</li>

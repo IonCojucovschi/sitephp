@@ -4,7 +4,6 @@ Head('Adaoga carti');
 ?>
 <body>
 <div class="wrapper" >
-	  <div class="header">headerul </div>
 	  <?php Menu();  MessageShow(); TopContent();?><!-- navigation bar and top content -->
 <div class="row middle" >
 		<?php 
@@ -49,7 +48,7 @@ Head('Adaoga carti');
             <input class="form-control" id="bookcontent" type="file" name="bookcontent" autofocus required><br>
             <input class="form-control" placeholder="Introdu textul alaturat"  id="captcha" type="text" name="captcha" autofocus required>
 
-           <img class="form-control" src="Resources/captcha.php" alt="Captcha">
+           <img src="Resources/captcha.php" alt="Captcha">
  
         </fieldset>
             
