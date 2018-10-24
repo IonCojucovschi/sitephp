@@ -441,10 +441,10 @@ function ShowAllCategories()
 	     	while($bo = mysqli_fetch_assoc($qrii)) {
 
 			 $showCategory.='<li>
-					 <a style="color=#ffffff;" 
+					 <a style="color:#ffffff;" 
 						href="/bookscategory/category/name/'.$bo['category'].'">'.$bo['category']."    (".$bo['quantity'].')
 						</a>
-					</li><hr/>';
+					</li><hr style="background:#ffffff;"/>';
 
 	        }
 
